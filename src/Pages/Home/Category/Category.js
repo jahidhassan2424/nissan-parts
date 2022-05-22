@@ -1,13 +1,15 @@
 import React from 'react';
 import './Category.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBackwardStep, faBars, faBarsProgress, faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
 const Category = () => {
     return (
-        <div className=' '>
-            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+        <div className='pt-[1rem]'>
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box shadow-lg">
                 <input type="checkbox" />
-                <div active class="collapse-title font-medium bg-accent text-2xl text-white ">
-                    Category
+                <div active class="collapse-title font-medium bg-accent text-2xl text-white  ">
+                    <FontAwesomeIcon icon={faBarsStaggered} /> Category
                 </div>
                 <div class="collapse-content">
                     <p>Steering Wheel</p>
@@ -15,7 +17,7 @@ const Category = () => {
                     <p>Bumper</p>
                     <p>Cowl screen</p>
                     <p>Decklid</p>
-                    <p>fascia</p>
+                    <p>Bonnet</p>
                 </div>
             </div>
 
