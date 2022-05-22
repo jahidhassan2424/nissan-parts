@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Purchase from '../Purchase';
 
 const SingleTools = ({ product, refetch }) => {
     const navigate = useNavigate();
     const { _id, name, brand, category, img, description } = product;
     const handleNavigateToPurchase = (id) => {
-        navigate('/purchase');
+        navigate(`/purchase/:${id}`);
     }
-
     return (
         <div>
             <div class="card card-compact w-96 bg-base-100 shadow-xl lg:min-h-[450px]">
