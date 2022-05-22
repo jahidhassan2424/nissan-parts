@@ -10,7 +10,6 @@ const Navbar = () => {
         <li className='hover:bg-accent  hover:rounded-lg '><Link to="/dashboard">Dashboard</Link></li>
         <li className='hover:bg-accent  hover:rounded-lg '><Link to="/login">Login</Link></li>
     </>
-
     return (
         <div class="navbar relative container ">
             <div class="navbar-start">
