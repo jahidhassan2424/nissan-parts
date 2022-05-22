@@ -1,7 +1,7 @@
 import React from 'react';
 import './Category.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBackwardStep, faBars, faBarsProgress, faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
+import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
 const Category = () => {
     return (
