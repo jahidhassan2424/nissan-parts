@@ -1,0 +1,15 @@
+.collapse-content > p{
+    padding: 10px;
+    margin-bottom: 10px ;
+    font-size: 20px;
+
+}
+
+.collapse-content > p:hover{
+background-color: rgb(215, 210, 210);
+box-shadow: 3px 3px  5px rgb(230, 227, 227);
+
+}
+.collapse-content{
+    padding: 0;
+}

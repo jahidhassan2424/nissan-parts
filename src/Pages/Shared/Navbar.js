@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const navItems = <>
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/reviews">Reviews</Link></li>
-        <li><Link to="/blogs">Blogs</Link> </li>
-        <li><Link to="/ContactUs">Contact Us</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/home">Home</Link></li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/reviews">Reviews</Link></li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/blogs">Blogs</Link> </li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/ContactUs">Contact Us</Link></li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/dashboard">Dashboard</Link></li>
+        <li className='hover:bg-secondary  hover:rounded-lg '><Link to="/login">Login</Link></li>
     </>
 
     return (
-        <div class="navbar  ">
+        <div class="navbar relative container ">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -22,7 +22,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to="/" class="font-bold normal-case text-4xl">NISSAN</Link>
+                <Link to="/" class="font-bold normal-case text-4xl">NISSAN PARTS</Link>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-0 text-xl">
