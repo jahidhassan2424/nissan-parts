@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Purchase from '../Purchase';
+import Purchase from '../../Purchase/Purchase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,7 @@ const SingleTools = ({ product, refetch }) => {
     }
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl lg:min-h-[450px]">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[800px]">
                 <figure><img src={img} alt={`An image of ${name}`} /></figure>
                 <div className="card-body text-center">
                     <h2 className="card-title text-2xl uppercase">{name}</h2>

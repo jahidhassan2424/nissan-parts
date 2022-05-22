@@ -5,7 +5,7 @@ import Home from './Pages/Home/Home/Home';
 import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
 import Loading from './Pages/Shared/Loading';
-import Purchase from './Pages/Home/Purchase';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   return (
