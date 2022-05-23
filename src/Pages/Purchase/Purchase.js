@@ -24,14 +24,11 @@ const Purchase = () => {
     return (
         <div className='containerManual'>
             <div className="hero mt-20">
-                <div className="flex flex-col lg:flex-row gap-10">
-                    <img src={product.img} className="max-w-xl rounded-lg shadow-2xl" />
-                    <div>
-                        <ProductDetails
-                            key={product._id}
-                            product={product}
-                        ></ProductDetails>
-                    </div>
+                <div>
+                    <ProductDetails
+                        key={product._id}
+                        product={product}
+                    ></ProductDetails>
                 </div>
 
             </div >

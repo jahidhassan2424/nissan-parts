@@ -6,7 +6,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const Banner = () => {
     return (
         <div>
-            <div className="hero  ">
+            <div className="hero ">
                 <div className="hero-content flex-col lg:flex-row gap-10">
                     <img src={banner} className="max-w-2xl rounded-xl shadow-2xl" />
                     <div>
