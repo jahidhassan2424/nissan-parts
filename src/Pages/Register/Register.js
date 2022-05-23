@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import makeId from './SuggestPass';
 
 const Register = () => {
     const [
@@ -14,15 +15,19 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [passwordBar, setPasswordBar] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     console.log(passwordBar);
 
+    // const handleSuggestPass = () => {
+
+    // }
     const onSubmit = data => {
         console.log(data)
         const name = data.name;
         const email = data.email;
         const password = data.password;
-        // createUserWithEmailAndPassword(email, password)
-        //     .then(res => console.log(res))
+        createUserWithEmailAndPassword(email, password)
+            .then(res => console.log(res))
     };
     console.log(passwordBar);
 
@@ -57,13 +62,24 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" class="hidden input input-bordered text-xl"
                                     />
-                                    <input type="text" placeholder="text" name='password' class="  input input-bordered text-xl" {...register("password",
+                                    <input value={passwordBar} type={showPassword ? "text" : "password"} placeholder="text" name='password' class="  input input-bordered text-xl" {...register("password",
                                         {
                                             required: true,
                                             pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
                                         })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
+
+                                    <div className='text-md flex  justify-between my-2'>
+                                        <div >
+                                            <button className='border border-zinc-400 px-2 py-1 hover:bg-accent  rounded-lg text-black font-bold' onClick={() => setPasswordBar(makeId(10))}>Suggest a Strong Password</button>
+                                        </div>
+                                        <div className='text-xl'>
+                                            <input onChange={() => setShowPassword(!showPassword)} type="checkbox" value="" />
+                                            <span> Show password</span>
+                                        </div>
+                                    </div>
+
                                     <PasswordStrengthBar password={passwordBar} />
 
                                     <label class="label">
@@ -71,7 +87,7 @@ const Register = () => {
                                         {errors?.password?.type === 'required' && <span class="label-text-alt text-red-500 text-lg">Password is Required</span>}
                                     </label>
 
-                                    <label class="mt-5">
+                                    <label>
                                         <Link to="/login" class=" pointer hover:text-primary text-xl">Already have an account? Login
                                         </Link>
                                     </label>
@@ -89,8 +105,8 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
