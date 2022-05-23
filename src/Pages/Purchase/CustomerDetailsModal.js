@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const CustomerDetailsModal = ({ setCustomerDetailModal, product }) => {
+const CustomerDetailsModal = ({ setCustomerDetailModal, product, customerDetailModal }) => {
     const [user] = useAuthState(auth);
     return (
         <div>

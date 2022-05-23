@@ -12,17 +12,20 @@ const ProductDetails = ({ product }) => {
 
     const handleQty = (e) => {
         e.preventDefault();
-        setQtyError('');
-        const value = (e.target.qty.value);
-        setTotalPrice(value * price)
-        setQty(parseInt(value));
+        if ((Qty < minOrder) || (Qty > availableQty)) {
+            setQtyError(`You can order between ${minOrder} to ${availableQty}`);
+            setQty(availableQty);
+        }
+        else {
+            setQtyError('Everything is fine');
+            const value = (e.target.qty.value);
+            setTotalPrice(value * price)
+            setQty(parseInt(value));
+            setCustomerDetailModal(true);
+        }
     }
-    console.log('Less Qty: ', Qty);
-    console.log('availableQty: ', availableQty);
-    if ((Qty < minOrder) || (Qty > availableQty)) {
-        setQtyError(`You can order between ${minOrder} to ${availableQty}`);
-        setQty(availableQty);
-    }
+
+
     return (
         <div className='grid grid-cols-2 '>
             <div className='productDetails-body'>
@@ -50,9 +53,11 @@ const ProductDetails = ({ product }) => {
                                 <span className="label-text text-xl">Enter Quantity</span>
                             </label>
                             <label className="input-group">
-                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" border px-5 border-black text-lg" />
-                                <button className='btn text-lg' type="submit">Enter</button>
+                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" border px-5 border-black text-lg" required />
+                                <button type="submit" for="customerDetailsOnPurchase" className="modal-button btn btn-primary uppercase text-white font-bold text-xl">Order Now</button>
                             </label>
+                            <div className="">
+                            </div>
                         </form>
                         {
                             qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
@@ -62,16 +67,13 @@ const ProductDetails = ({ product }) => {
                         </div>
                     </div>
                 </div>
-                <div className="">
-                    <label onClick={() => setCustomerDetailModal(true)} for="customerDetailsOnPurchase" className="modal-button btn btn-primary uppercase text-white font-bold text-xl">Order Now</label>
-                </div>
+
             </div>
             {
                 customerDetailModal && <CustomerDetailsModal
                     product={product}
                     customerDetailModal={customerDetailModal}
                     setCustomerDetailModal={setCustomerDetailModal}
-
                 ></CustomerDetailsModal>
             }
 

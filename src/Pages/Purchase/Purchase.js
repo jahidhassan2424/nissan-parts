@@ -9,7 +9,7 @@ import ProductDetails from './ProductDetails';
 const Purchase = () => {
     const { id } = useParams();
     const [product, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`http://localhost:5000/product/${id}`)
+    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`https://evening-woodland-82887.herokuapp.com/product/${id}`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);
@@ -22,7 +22,7 @@ const Purchase = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='containerManual'>
             <div className="hero mt-20">
                 <div className="flex flex-col lg:flex-row gap-10">
                     <img src={product.img} className="max-w-xl rounded-lg shadow-2xl" />
@@ -30,7 +30,6 @@ const Purchase = () => {
                         <ProductDetails
                             key={product._id}
                             product={product}
-
                         ></ProductDetails>
                     </div>
                 </div>
