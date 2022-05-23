@@ -17,7 +17,7 @@ const ProductDetails = ({ product }) => {
     console.log('Less Qty: ', Qty);
     console.log('availableQty: ', availableQty);
     if ((Qty < minOrder) || (Qty > availableQty)) {
-        setQtyError('Please see product quantity and minimum order');
+        setQtyError(`You can order between ${minOrder} to ${availableQty}`);
         setQty(availableQty);
     }
     return (

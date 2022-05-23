@@ -6,6 +6,8 @@ import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
 import Loading from './Pages/Shared/Loading';
 import Purchase from './Pages/Purchase/Purchase';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path='/home' element={<Home />} ></Route>
         <Route path='/loading' element={<Loading />} ></Route>
         <Route path='/purchase/:id' element={<Purchase />} ></Route>
+        <Route path='/login' element={<Login />} ></Route>
+        <Route path='/register' element={<Register />} ></Route>
       </Routes>
       <Footer />
     </div>
