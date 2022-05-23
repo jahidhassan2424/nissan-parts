@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
@@ -17,17 +17,22 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [passwordBar, setPasswordBar] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     console.log(passwordBar);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     // const handleSuggestPass = () => {
 
     // }
-    const onSubmit = data => {
+    const onSubmit = async data => {
         console.log(data)
         const name = data.name;
         const email = data.email;
         const password = data.password;
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password);
+        const displayName = user.displayName;
+        await updateProfile({ displayName })
+
     };
     if (user) {
         navigate('/')
@@ -35,7 +40,6 @@ const Register = () => {
 
     return (
         <div>
-            Input<input onChange={(e) => setPasswordBar(e.target.value)} type="text" />
             <div className=" flex justify-center items-center mt-20">
                 <div className=" w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
@@ -100,7 +104,7 @@ const Register = () => {
                                     <div className="divider">OR</div>
                                 </div>
                                 <div className="form-control ">
-                                    <button className="btn bg-white text-black hover:text-white  font-bold text-lg ">Continue With Google</button>
+                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black hover:text-white  font-bold text-lg ">Continue With Google</button>
                                 </div>
                             </div>
                         </form>
