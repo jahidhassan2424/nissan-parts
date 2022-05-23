@@ -2,11 +2,14 @@ import React, { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './ProductDetails.css'
+import CustomerDetailsModal from './CustomerDetailsModal';
 const ProductDetails = ({ product }) => {
     const { name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
     const [Qty, setQty] = useState(minOrder);
     const [qtyError, setQtyError] = useState('');
+    const [customerDetailModal, setCustomerDetailModal] = useState(false);
+
     const handleQty = (e) => {
         e.preventDefault();
         setQtyError('');
@@ -60,10 +63,21 @@ const ProductDetails = ({ product }) => {
                     </div>
                 </div>
                 <div className="">
-                    <button className="btn btn-primary uppercase text-white font-bold text-xl">Order Now</button>
+                    <label onClick={() => setCustomerDetailModal(true)} for="customerDetailsOnPurchase" className="modal-button btn btn-primary uppercase text-white font-bold text-xl">Order Now</label>
                 </div>
             </div>
-        </div >
+            {
+                customerDetailModal && <CustomerDetailsModal
+                    product={product}
+                    customerDetailModal={customerDetailModal}
+                    setCustomerDetailModal={setCustomerDetailModal}
+
+                ></CustomerDetailsModal>
+            }
+
+        </div>
+
+
     );
 };
 export default ProductDetails;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -8,6 +8,8 @@ const Login = () => {
     const [forgetPass, setForgetPass] = useState(false);
     const [forgetPassText, setForgetPassText] = useState("");
     const [passwordError, setPasswordError] = useState('');
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -22,11 +24,13 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [showPassword, setShowPassword] = useState(false);
+
     if (loading || gLoading) {
         return <Loading></Loading>
     }
     if (user || gUser) {
-        navigate('/');
+        navigate(from, { replace: true });
     }
     const onSubmit = data => {
         console.log(data)
@@ -60,10 +64,15 @@ const Login = () => {
                                         <span className="label-text text-xl">Password</span>
                                     </label>
 
-                                    <input type="text" placeholder="Password" name='password' className="input input-bordered text-xl" {...register("password",
+                                    <input type={showPassword ? "text" : "password"} placeholder="Password" name='password' className="input input-bordered text-xl" {...register("password",
                                         {
                                             required: true,
                                         })} />
+                                    <div className='text-xl flex justify-end items-center'>
+                                        <input onChange={() => setShowPassword(!showPassword)} type="checkbox" value=""  >
+                                        </input>
+                                        <span> &nbsp; Show password</span>
+                                    </div>
 
 
                                     {/* Forget password area  */}

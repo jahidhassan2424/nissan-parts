@@ -8,7 +8,7 @@ const Category = () => {
         <div className='pt-[1rem]'>
             <div tabIndex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box shadow-lg">
                 <input type="checkbox" />
-                <div active className="collapse-title font-medium bg-primary text-2xl text-white  ">
+                <div className="collapse-title font-medium bg-primary text-2xl text-white  ">
                     <FontAwesomeIcon icon={faBarsStaggered} /> Category
                 </div>
                 <div className="collapse-content">

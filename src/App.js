@@ -8,6 +8,9 @@ import Loading from './Pages/Shared/Loading';
 import Purchase from './Pages/Purchase/Purchase';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Blog from './Pages/Blog';
+import RequireAuth from './Pages/Shared/RequireAuth';
 
 function App() {
   return (
@@ -17,9 +20,14 @@ function App() {
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
         <Route path='/loading' element={<Loading />} ></Route>
-        <Route path='/purchase/:id' element={<Purchase />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
+        <Route path='/purchase/:id' element={
+          <RequireAuth><Purchase /></RequireAuth>} ></Route>
+        <Route path='/dashboard' element={
+          <RequireAuth><Dashboard ></Dashboard></RequireAuth>
+        } ></Route>
+        <Route path='/blog' element={<Blog />} ></Route>
       </Routes>
       <Footer />
     </div>

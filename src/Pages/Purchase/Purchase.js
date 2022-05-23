@@ -30,10 +30,12 @@ const Purchase = () => {
                         <ProductDetails
                             key={product._id}
                             product={product}
+
                         ></ProductDetails>
                     </div>
                 </div>
-            </div>
+
+            </div >
         </div>
     );
 };
