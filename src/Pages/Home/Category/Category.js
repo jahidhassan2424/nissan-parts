@@ -6,12 +6,12 @@ import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 const Category = () => {
     return (
         <div className='pt-[1rem]'>
-            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box shadow-lg">
+            <div tabIndex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box shadow-lg">
                 <input type="checkbox" />
-                <div active class="collapse-title font-medium bg-accent text-2xl text-white  ">
+                <div active className="collapse-title font-medium bg-primary text-2xl text-white  ">
                     <FontAwesomeIcon icon={faBarsStaggered} /> Category
                 </div>
-                <div class="collapse-content">
+                <div className="collapse-content">
                     <p>Steering Wheel</p>
                     <p>Wheels</p>
                     <p>Bumper</p>

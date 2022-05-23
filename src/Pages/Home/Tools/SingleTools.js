@@ -25,11 +25,11 @@ const SingleTools = ({ product, refetch }) => {
                     <p className=" text-lg font-semibold">Category: <b className='uppercase'>{category}</b> </p>
                     <p className=" text-lg font-semibold">Brand: <b className='uppercase'>{brand}</b> </p>
                     <p><span className='text-lg font-semibold'>Rating: </span>
-                        <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                     </p>
                     <p className='text-lg '>{description}</p>
                     <div className="card-actions justify-center">

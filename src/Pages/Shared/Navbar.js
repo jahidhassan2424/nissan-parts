@@ -1,15 +1,29 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, NavLink } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+    const handleSIgnOut = () => {
+        signOut(auth);
+    }
     const navItems = <>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/home">Home</Link></li>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/reviews">Reviews</Link></li>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/blogs">Blogs</Link> </li>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/ContactUs">Contact Us</Link></li>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/dashboard">Dashboard</Link></li>
-        <li className='hover:bg-accent  hover:rounded-lg '><Link to="/login">Login</Link></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/home">Home</NavLink></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/reviews">Reviews</NavLink></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/blogs">Blogs</NavLink> </li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/ContactUs">Contact Us</NavLink></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/dashboard">Dashboard</NavLink></li>
+        {
+            user
+                ?
+                <li onClick={handleSIgnOut} className='hover:bg-primary  hover:rounded-lg '><NavLink to="/login">SignOut</NavLink></li>
+                :
+                <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/login">Login</NavLink></li>
+        }
     </>
+
     return (
         <div className="navbar relative container ">
             <div className="navbar-start">

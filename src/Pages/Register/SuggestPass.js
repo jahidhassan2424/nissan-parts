@@ -20,6 +20,5 @@ function makeId(length) {
     }
     return (result1 + result2 + result3);
 }
-<button onClick={() => setPasswordBar(makeId(10))}>Suggest strong</button>
 
 export default makeId;

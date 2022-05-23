@@ -31,23 +31,23 @@ const ProductDetails = ({ product }) => {
                 <p className=" text-lg font-semibold">Category: <b className='uppercase'>{category}</b> </p>
                 <p className=" text-lg font-semibold">Brand: <b className='uppercase'>{brand}</b> </p>
                 <p><span className='text-lg font-semibold'>Rating: </span>
-                    <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                    <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                    <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                    <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
-                    <FontAwesomeIcon className='text-primary text-xl' icon={faStar} />
+                    <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                    <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                    <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                    <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                    <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                 </p>
                 <p className='text-lg '>{description}</p>
             </div>
             <div className='flex flex-col justify-center items-center'>
                 <div className='flex flex-cols gap-200'>
-                    <div class=" ">
+                    <div className=" ">
                         <form onSubmit={handleQty} >
-                            <label class="label">
-                                <span class="label-text text-xl">Enter Quantity</span>
+                            <label className="label">
+                                <span className="label-text text-xl">Enter Quantity</span>
                             </label>
-                            <label class="input-group">
-                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' class=" border px-5 border-black text-lg" />
+                            <label className="input-group">
+                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" border px-5 border-black text-lg" />
                                 <button className='btn text-lg' type="submit">Enter</button>
                             </label>
                         </form>

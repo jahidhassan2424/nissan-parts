@@ -12,7 +12,7 @@ const Banner = () => {
                     <div>
                         <h1 className="text-6xl font-bold uppercase">Nissan Spare Parts!</h1>
                         <p className="py-6">We make best quality spare parts and supply them globally. Find your needs from our vast collection</p>
-                        <button className="btn btn-primary btn-xl text-xl text-white font-bold bg-gradient-to-r from-primary to-secondary hover:bg-gradient-to-l border-0 shadow-lg">ORDER NOW &nbsp; <FontAwesomeIcon icon={faArrowRight} /></button>
+                        <button className="btn btn-primary btn-xl text-xl text-white font-bold  border-0 shadow-lg">ORDER NOW &nbsp; <FontAwesomeIcon icon={faArrowRight} /></button>
                     </div>
                 </div>
             </div>

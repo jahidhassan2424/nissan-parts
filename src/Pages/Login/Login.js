@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
@@ -8,10 +8,13 @@ const Login = () => {
     const [forgetPass, setForgetPass] = useState(false);
     const [forgetPassText, setForgetPassText] = useState("");
     const [passwordError, setPasswordError] = useState('');
-
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    // Error State
+    const [customError, setCustomError] = useState('');
+    const navigate = useNavigate();
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
         user,
@@ -19,42 +22,45 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    if (loading) {
+    if (loading || gLoading) {
         return <Loading></Loading>
     }
-    error && setPasswordError(error.message);
+    if (user || gUser) {
+        navigate('/');
+    }
     const onSubmit = data => {
         console.log(data)
         const email = data.email;
         const password = data.password;
+        signInWithEmailAndPassword(email, password);
     };
 
     return (
         <div>
-            <div class=" flex justify-center items-center mt-20">
-                <div class=" w-1/4 flex-col lg:flex-row-reverse">
-                    <div class="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
+            <div className=" flex justify-center items-center mt-20">
+                <div className=" w-1/4 flex-col lg:flex-row-reverse">
+                    <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
-                                <div class="form-control ">
-                                    <label class="label">
-                                        <span class="label-text text-xl">Email</span>
+                                <div className="form-control ">
+                                    <label className="label">
+                                        <span className="label-text text-xl">Email</span>
                                     </label>
 
-                                    <input type="email" placeholder="Email" name='email' class="input input-bordered text-xl" {...register("email",
+                                    <input type="email" placeholder="Email" name='email' className="input input-bordered text-xl" {...register("email",
                                         { required: true })} />
-                                    <label class="label">
-                                        {errors?.email?.type === 'required' && <span class="label-text-alt text-lg">{errors.email.message}</span>}
+                                    <label className="label">
+                                        {errors?.email?.type === 'required' && <span className="label-text-alt text-lg">{errors.email.message}</span>}
                                     </label>
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text text-xl">Password</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-xl">Password</span>
                                     </label>
 
-                                    <input type="text" placeholder="Password" name='password' class="input input-bordered text-xl" {...register("password",
+                                    <input type="text" placeholder="Password" name='password' className="input input-bordered text-xl" {...register("password",
                                         {
                                             required: true,
                                         })} />
@@ -64,17 +70,24 @@ const Login = () => {
                                     <div className=''>
 
                                         {
-                                            forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" class="mt-5 input input-bordered text-xl w-full" />
+                                            forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" className="mt-5 input input-bordered text-xl w-full" />
                                         }
                                         <br />
-                                        <label class="my-2">
-                                            <button onClick={() => setForgetPass(true)} class=" hover:text-primary text-xl"><span >Forgot password?</span></button>
-                                        </label>
+                                        <div className='flex flex-row-reverse justify-between'>
+                                            <div >
+                                                <label className="my-2">
+                                                    <button onClick={() => setForgetPass(true)} className=" hover:text-accent font-semibold text-xl"><span >Forgot password?</span></button>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label className="">
+                                                    <Link to="/register" className=" pointer hover:text-accent font-semibold text-xl">New here? Sign Up
+                                                    </Link>
+                                                </label>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <label class="">
-                                        <Link to="/register" class=" pointer hover:text-primary  text-xl">New here? Sign Up
-                                        </Link>
-                                    </label>
                                 </div>
 
                                 {/* Error Shows here */}
@@ -82,16 +95,23 @@ const Login = () => {
                                     {
                                         passwordError && <p className='text-red-500'>{passwordError}</p>
                                     }
+                                    {
+                                        gError && <p value={gError} className='text-red-500 font-bold'>{gError.message.slice(9)}</p>
+
+                                    }
+                                    {
+                                        error && <p className='text-red-500 font-bold'>{error.message.slice(9)}</p>
+                                    }
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button type="submit" class="btn btn-accent font-bold text-lg text-white">Login</button>
+                                <div className="form-control mt-6">
+                                    <button type="submit" className="btn btn-primary font-bold text-lg text-white">Login</button>
                                 </div>
 
-                                <div class="flex flex-col w-full border-opacity-50">
-                                    <div class="divider">OR</div>
+                                <div className="flex flex-col w-full border-opacity-50">
+                                    <div className="divider">OR</div>
                                 </div>
-                                <div class="form-control ">
-                                    <button class="btn bg-white text-black hover:text-white  font-bold text-lg ">Continue With Google</button>
+                                <div className="form-control ">
+                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black hover:text-white  font-bold text-lg ">Continue With Google</button>
                                 </div>
                             </div>
                         </form>
