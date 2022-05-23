@@ -7,8 +7,6 @@ import auth from '../../firebase.init';
 import axios from 'axios';
 import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 import { toast } from 'react-toastify';
-
-
 const ProductDetails = ({ product }) => {
     const { name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
@@ -16,7 +14,6 @@ const ProductDetails = ({ product }) => {
     const [qtyError, setQtyError] = useState('');
     const [customerDetailModal, setCustomerDetailModal] = useState(false);
     const [user] = useAuthState(auth);
-
     const handleQty = (e) => {
         e.preventDefault();
         const quantity = parseInt(e.target.qty.value);
@@ -32,7 +29,6 @@ const ProductDetails = ({ product }) => {
                 phone: e.target.phone.value,
                 orderQuantity: e.target.qty.value
             }
-
             // Sending Data to database
             const url = `http://localhost:5000/orders`;
             fetch(url, {
@@ -50,26 +46,15 @@ const ProductDetails = ({ product }) => {
                         })
                     }
                 })
-
-
-
-
-
         }
-
     }
-
-
     return (
         <div>
-
             <div className='grid grid-cols-3 gap-20 items-center'>
-
                 {/* Element  1*/}
                 <div className='shadow-xl rounded-xl '>
                     <img src={product.img} className="max-w-cover rounded-lg " />
                 </div>
-
                 {/* Element  2*/}
                 <div className='productDetails-body  p-5 rounded-xl'>
                     <h2 className="card-title text-2xl uppercase">{name}</h2>
@@ -88,40 +73,32 @@ const ProductDetails = ({ product }) => {
                     </p>
                     <p className='text-lg '>{description}</p>
                 </div>
-
-
                 {/* Element  3*/}
                 <div className='flex flex-cols justify-center ' >
                     <div className=' w-fit shadow-xl p-10 rounded-xl '>
                         <div className=" ">
                             <form onSubmit={handleQty} >
                                 <h2 className='text-4xl  mb-5 text-center font-bold'>Customer Details</h2>
-
                                 {/* Name  */}
                                 <label className="label">
                                     <span className="label-text text-xl">Your Name</span>
                                 </label>
                                 <input type="text" value={user.displayName} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
-
                                 {/* Email */}
                                 <label className="label">
                                     <span className="label-text text-xl">Your Email</span>
                                 </label>
                                 <input type="text" value={user.email} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
-
                                 {/* Address */}
                                 <label className="label">
                                     <span className="label-text text-xl">Shipping Address</span>
                                 </label>
                                 <input type="text" placeholder="Type Your Address" class=" text-xl border-black input w-full max-w-full" name='address' required />
-
                                 {/* Phone number */}
                                 <label className="label">
                                     <span className="label-text text-xl">Phone Number</span>
                                 </label>
                                 <input type="number" placeholder="You Mobile no." class=" text-xl border-black input w-full max-w-full" name="phone" />
-
-
                                 <label className="label">
                                     <span className="label-text text-xl">Enter Quantity</span>
                                 </label>
@@ -140,13 +117,9 @@ const ProductDetails = ({ product }) => {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
         </div>
-
     );
 };
 export default ProductDetails;
