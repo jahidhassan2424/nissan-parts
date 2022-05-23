@@ -69,9 +69,10 @@ const Login = () => {
                                             required: true,
                                         })} />
                                     <div className='text-xl flex justify-end items-center'>
-                                        <input onChange={() => setShowPassword(!showPassword)} type="checkbox" value=""  >
-                                        </input>
-                                        <span> &nbsp; Show password</span>
+                                        <label class="label cursor-pointer">
+                                            <span class="label-text text-lg">&nbsp; Show Password &nbsp;</span>
+                                            <input onClick={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} class="checkbox" />
+                                        </label>
                                     </div>
 
 
@@ -126,7 +127,7 @@ const Login = () => {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div >
 
         </div >
     )

@@ -31,7 +31,5 @@ const ToolPart = () => {
             </div>
         </div>
     );
-
 }
-
 export default ToolPart;

@@ -14,11 +14,13 @@ import RequireAuth from './Pages/Shared/RequireAuth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OurProducts from './Pages/OurProducts/OurProducts';
+import ShowUserProfileIcon from './Pages/Shared/ShowUserProfileIcon';
 
 function App() {
   return (
     <div>
       <Navbar />
+      <ShowUserProfileIcon></ShowUserProfileIcon>
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
