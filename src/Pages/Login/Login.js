@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 const Login = () => {
     const [forgetPass, setForgetPass] = useState(false);
     const [forgetPassText, setForgetPassText] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [passwordError, setPasswordError] = useState('');
 
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
