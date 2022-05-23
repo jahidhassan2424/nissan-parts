@@ -11,6 +11,8 @@ import Register from './Pages/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Blog from './Pages/Blog';
 import RequireAuth from './Pages/Shared/RequireAuth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path='/blog' element={<Blog />} ></Route>
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   )
 }

@@ -4,6 +4,11 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './ProductDetails.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import axios from 'axios';
+import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
+import { toast } from 'react-toastify';
+
+
 const ProductDetails = ({ product }) => {
     const { name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
@@ -20,6 +25,36 @@ const ProductDetails = ({ product }) => {
         }
         else {
             setQtyError(null);
+            const placeOrderInfo = {
+                name: user.displayName,
+                email: user.email,
+                address: e.target.address.value,
+                phone: e.target.phone.value,
+                orderQuantity: e.target.qty.value
+            }
+
+            // Sending Data to database
+            const url = `http://localhost:5000/orders`;
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(placeOrderInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        toast.success('Order Placed Successfully', {
+                            autoClose: 1500
+                        })
+                    }
+                })
+
+
+
+
+
         }
 
     }
@@ -61,25 +96,30 @@ const ProductDetails = ({ product }) => {
                         <div className=" ">
                             <form onSubmit={handleQty} >
                                 <h2 className='text-4xl  mb-5 text-center font-bold'>Customer Details</h2>
+
+                                {/* Name  */}
                                 <label className="label">
                                     <span className="label-text text-xl">Your Name</span>
                                 </label>
                                 <input type="text" value={user.displayName} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
 
+                                {/* Email */}
                                 <label className="label">
                                     <span className="label-text text-xl">Your Email</span>
                                 </label>
                                 <input type="text" value={user.email} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
 
+                                {/* Address */}
                                 <label className="label">
                                     <span className="label-text text-xl">Shipping Address</span>
                                 </label>
-                                <input type="text" placeholder="Type Your Address" class=" text-xl border-black input w-full max-w-full" />
+                                <input type="text" placeholder="Type Your Address" class=" text-xl border-black input w-full max-w-full" name='address' required />
 
+                                {/* Phone number */}
                                 <label className="label">
                                     <span className="label-text text-xl">Phone Number</span>
                                 </label>
-                                <input type="number" placeholder="You Mobile no." class=" text-xl border-black input w-full max-w-full" />
+                                <input type="number" placeholder="You Mobile no." class=" text-xl border-black input w-full max-w-full" name="phone" />
 
 
                                 <label className="label">
@@ -96,7 +136,7 @@ const ProductDetails = ({ product }) => {
                                 qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
                             }
                             <div className='my-5'>
-                                <p className='text-2xl text-center'>Total Price: {totalPrice}</p>
+                                <p className='text-2xl text-center'>Total Price: ${totalPrice}</p>
                             </div>
                         </div>
                     </div>
