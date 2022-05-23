@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
+import { sendEmailVerification } from 'firebase/auth';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -17,24 +18,26 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [passwordBar, setPasswordBar] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    console.log(passwordBar);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
 
     // const handleSuggestPass = () => {
 
     // }
     const onSubmit = async data => {
         console.log(data)
-        const name = data.name;
+        const displayName = data.name;
         const email = data.email;
         const password = data.password;
-        await createUserWithEmailAndPassword(email, password);
-        const displayName = user.displayName;
-        await updateProfile({ displayName })
+        await createUserWithEmailAndPassword(email, password);  // create user
+        await updateProfile({ displayName }) //Update Display Name
+        await sendEmailVerification(); // Send Verification Email
+
 
     };
     if (user) {
+        console.log(user.name);
         navigate('/')
     }
 
