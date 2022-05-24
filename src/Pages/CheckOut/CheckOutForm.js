@@ -8,7 +8,7 @@ import {
 import Loading from '../Shared/Loading';
 import userEvent from '@testing-library/user-event';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
@@ -19,7 +19,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
     const [paymentSuccess, setPaymentSuccess] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [fetchDone, setFetchDone] = useState(true);
-
+    const navigate = useNavigate();
     const { amount, customerName, email, _id, isPaid } = orderDetails;
 
 
@@ -102,6 +102,8 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
                     refetch();
                     toast.success('Payment Successfull');
                 })
+            navigate('/dashboard/my-orders')
+
         }
     }
     return (
@@ -133,9 +135,11 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
                 <button className='btn btn-primary font-semibold text-white text-xl w-full' type="submit" disabled={!stripe || !clientSecret || isPaid}>
                     Pay Now
                 </button>
-                <Link to="/dashboard/my-orders" className='btn mt-5 btn-neutral font-semibold text-white text-xl w-full' >
-                    Cancel Payment
-                </Link >
+                {
+                    !isPaid && <Link to="/dashboard/my-orders" className='btn mt-5 btn-neutral font-semibold text-white text-xl w-full' >
+                        Cancel Payment
+                    </Link >
+                }
             </div>
         </form>
     )
