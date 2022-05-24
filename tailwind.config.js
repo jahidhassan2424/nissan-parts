@@ -17,5 +17,10 @@ module.exports = {
       "cupcake",
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+  function ({ addVariant }) {
+    addVariant('child', '& > *');
+    addVariant('child-hover', '& > *:hover');
+  }
+  ],
 }

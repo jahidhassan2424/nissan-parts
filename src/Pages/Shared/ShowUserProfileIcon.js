@@ -13,10 +13,10 @@ const ShowUserProfileIcon = () => {
     return (
         <div>
             {
-                user && <div className='flex flex-row gap-3 items-center justify-end px-5'>
-                    <p className='text-xl'>Howdy, {user.displayName}</p>
+                user && <div className='flex flex-row gap-3 py-3 bg-zinc-700 items-center justify-end px-5'>
+                    <p className='text-xl text-white'>Howdy, {user.displayName}</p>
                     <div class="avatar">
-                        <div class="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <div class="w-8 rounded-full ring ring-primary ring-offset-zinc-700 ring-offset-2">
                             {
                                 user.photoURL
                                     ?

@@ -15,12 +15,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OurProducts from './Pages/OurProducts/OurProducts';
 import ShowUserProfileIcon from './Pages/Shared/ShowUserProfileIcon';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import MyReview from './Pages/Dashboard/MyReview';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import ManageUsers from './Pages/Dashboard/ManageUsers';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
 
 function App() {
   return (
     <div>
-      <Navbar />
       <ShowUserProfileIcon></ShowUserProfileIcon>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
@@ -31,8 +36,14 @@ function App() {
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase /></RequireAuth>} ></Route>
         <Route path='/dashboard' element={
-          <RequireAuth><Dashboard ></Dashboard></RequireAuth>
-        } ></Route>
+          <RequireAuth><Dashboard />
+          </RequireAuth>} >
+          <Route index element={<MyProfile />} ></Route>
+          <Route path="/dashboard/my-review" element={<MyReview />} ></Route>
+          <Route path="/dashboard/my-orders" element={<MyOrders />} ></Route>
+          <Route path="/dashboard/manage-orders" element={<ManageOrders />} ></Route>
+          <Route path="/dashboard/manage-users" element={<ManageUsers />} ></Route>
+        </Route>
         <Route path='/blog' element={<Blog />} ></Route>
       </Routes>
       <Footer />
