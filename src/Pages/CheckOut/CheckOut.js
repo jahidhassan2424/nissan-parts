@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import { loadStripe } from '@stripe/stripe-js';
+import {
+    CardElement,
+    Elements,
+    useStripe,
+    useElements,
+} from '@stripe/react-stripe-js';
+import CheckOutForm from './CheckOutForm';
+const stripePromise = loadStripe('pk_test_51L1ZciEei3cvnsgH18KkXBrVikFBmpmiYfUBWq3HLfMeZf3q4G5h5v7uMFAftFPRu9S0nTcFK2LGlUksioo8y5xj00S78MY6rA');
 
 const CheckOut = () => {
     const { orderId } = useParams();
@@ -51,13 +60,14 @@ const CheckOut = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div class="card w-1/3 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title!</h2>
+                <div class="card w-1/3 bg-base-100 shadow-xl  ">
+                    <h1 className='text-3xl font-bold text-center mt-8'>Payment</h1>
+                    <div class="card-body ">
+                        <Elements stripe={stripePromise}>
+                            <CheckOutForm isLoading={isLoading} orderDetails={orderDetails} />
+                        </Elements>
 
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
