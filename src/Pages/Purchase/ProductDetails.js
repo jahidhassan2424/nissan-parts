@@ -44,6 +44,8 @@ const ProductDetails = ({ product }) => {
                         toast.success('Order Placed Successfully', {
                             autoClose: 1500
                         })
+
+
                     }
                 })
         }

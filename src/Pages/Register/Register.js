@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
 import { sendEmailVerification } from 'firebase/auth';
+import SendEmail from '../Shared/SendEmail';
 
 const Register = () => {
     const [primaryUser] = useAuthState(auth)
@@ -27,32 +28,19 @@ const Register = () => {
 
     // }
     const onSubmit = async data => {
-        console.log(data);
         const displayName = data.name;
         const email = data.email;
         const password = data.password;
         await createUserWithEmailAndPassword(email, password);  // create user
         await updateProfile({ displayName }) //Update Display Name
         await sendEmailVerification(); // Send Verification Email
-        console.log('Display Name Updated');
     };
     if (primaryUser) {
-        const emailBody = {
-            toEmail: primaryUser.email,
-            subject: "About account registration",
-            text: `Welcome to Nissan Parts Family. Your account registration completed successfully.`,
-        }
-        console.log(emailBody);
-
-        fetch(`http://localhost:5000/email`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(emailBody)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+        <SendEmail
+            user={primaryUser}
+            subject={"Account Registration"}
+            text={"You account has been successfully registered in Nissan Parts. Thank you."}
+        ></SendEmail>
         navigate('/')
     }
 
