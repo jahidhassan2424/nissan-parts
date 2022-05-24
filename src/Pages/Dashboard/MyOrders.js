@@ -34,12 +34,13 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-
                         {
                             myOrders.map((myOrder, index) => <SingleOrder
                                 key={myOrder._id}
                                 details={myOrder}
                                 index={index}
+                                isLoading={isLoading}
+                                id={myOrder._id}
                             ></SingleOrder>)
                         }
                     </tbody>

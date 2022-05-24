@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import Purchase from '../../Purchase/Purchase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Loading from '../../Shared/Loading';
 
-const SingleTools = ({ product, refetch }) => {
+const SingleTools = ({ isLoading, product, refetch }) => {
     const navigate = useNavigate();
     const { _id, name, brand, category, img, description, minOrder, price, itemSold, availableQty } = product;
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     const handleNavigateToPurchase = (id) => {
         console.log(id);
-
         navigate(`/purchase/${id}`);
     }
     return (

@@ -23,6 +23,7 @@ const OurProducts = () => {
                         key={product._id}
                         product={product}
                         refetch={refetch}
+                        isLoading={isLoading}
                     ></SingleTools>)
                 }
             </div>

@@ -1,7 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Loading from '../Shared/Loading';
 
-const SingleOrder = ({ details, index }) => {
-    const { productName, productBrand, email, address, orderQuantity, amount, isPaid } = details;
+const SingleOrder = ({ details, index, isLoading }) => {
+
+    const { _id, productName, productBrand, email, address, orderQuantity, amount, isPaid } = details;
+
+    console.log('From SingleOrder:', _id);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
 
         <tr >
@@ -10,9 +20,9 @@ const SingleOrder = ({ details, index }) => {
             <td>{address}</td>
             <td>{orderQuantity}</td>
             <td className='text-center'>$ {amount}</td>
-            <td className='text-center'>{isPaid ? <button disabled className='btn btn-primary font-bold text-white'>PAID </button> : <button className='btn btn-primary font-bold text-white'>PAY </button>}</td>
+            <td className='text-center'>{isPaid ? <button disabled className='btn btn-primary font-bold text-white'>PAID </button> : <Link to={`/checkout/${_id}`} className='btn btn-primary font-bold text-white'>PAY </Link>}</td>
 
-            <td>{isPaid ? <button disabled className='btn btn-error font-bold text-white'>CANCEL </button> : <button className='btn bg-red-500 border-0 hover:bg-red-700 font-bold text-white'>CANCEL </button>}</td>
+            <td>{isPaid ? <button disabled className='btn btn-error font-bold text-white'>CANCEL </button> : <Link to="/" className='btn bg-red-500 border-0 hover:bg-red-700 font-bold text-white'>CANCEL </Link>}</td>
         </tr>
 
     );
