@@ -133,22 +133,22 @@ const ProductDetails = ({ product }) => {
                                 <label className="label">
                                     <span className="label-text text-xl">Your Name</span>
                                 </label>
-                                <input type="text" value={user.displayName} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
+                                <input type="text" value={user.displayName} disabled placeholder="Type here" className=" text-xl border-black input w-full max-w-full" />
                                 {/* Email */}
                                 <label className="label">
                                     <span className="label-text text-xl">Your Email</span>
                                 </label>
-                                <input type="text" value={user.email} disabled placeholder="Type here" class=" text-xl border-black input w-full max-w-full" />
+                                <input type="text" value={user.email} disabled placeholder="Type here" className=" text-xl border-black input w-full max-w-full" />
                                 {/* Address */}
                                 <label className="label">
                                     <span className="label-text text-xl">Shipping Address</span>
                                 </label>
-                                <input type="text" placeholder="Type Your Address" class=" text-xl border-black input w-full max-w-full" name='address' required />
+                                <input type="text" placeholder="Type Your Address" className=" text-xl border-black input w-full max-w-full" name='address' required />
                                 {/* Phone number */}
                                 <label className="label">
                                     <span className="label-text text-xl">Phone Number</span>
                                 </label>
-                                <input type="number" placeholder="You Mobile no." class=" text-xl border-black input w-full max-w-full" name="phone" />
+                                <input type="number" placeholder="You Mobile no." className=" text-xl border-black input w-full max-w-full" name="phone" />
                                 <label className="label">
                                     <span className="label-text text-xl">Enter Quantity</span>
                                 </label>

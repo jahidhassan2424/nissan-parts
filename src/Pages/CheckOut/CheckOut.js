@@ -15,7 +15,6 @@ const stripePromise = loadStripe('pk_test_51L1ZciEei3cvnsgH18KkXBrVikFBmpmiYfUBW
 const CheckOut = () => {
     const { orderId } = useParams();
     const [orderDetails, setOrderDetails] = useState([]);
-    console.log('From CheckOut', orderId);
 
     // Order Data
     const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:5000/singleOrder/${orderId}`)
@@ -32,14 +31,14 @@ const CheckOut = () => {
             <h1 className='text-5xl font-bold text-center mb-20'>Checkout</h1>
             {/* <div className='grid lg:grid-col-2 grid-col-1 gap-10 grid-flow-row'> */}
             <div className='flex flex-col gap-10 lg:flex-row justify-center'>
-                <div class="card w-1/3 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class=" text-3xl font-bold text-center mb-5">Your Order Details {isPaid && <span class="badge badge-primary text-white">Paid</span>}</h2>
-                        <div class="overflow-x-auto">
+                <div className="card w-1/3 bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className=" text-3xl font-bold text-center mb-5">Your Order Details {isPaid && <span className="badge badge-primary text-white">Paid</span>}</h2>
+                        <div className="overflow-x-auto">
                             <div className="flex flex-col w-full border-opacity-50">
                                 <div className="divider text-xl"></div>
                             </div>
-                            <table class="table w-full">
+                            <table className="table w-full">
                                 <tbody className='child:text-xl text-center'>
                                     <tr >
                                         <th>Product</th>
@@ -61,9 +60,9 @@ const CheckOut = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div class="card w-1/3 bg-base-100 shadow-xl  ">
+                <div className="card w-1/3 bg-base-100 shadow-xl  ">
                     <h1 className='text-3xl font-bold text-center mt-8'>Payment</h1>
-                    <div class="card-body ">
+                    <div className="card-body ">
                         <Elements stripe={stripePromise}>
                             <CheckOutForm refetch={refetch} isLoading={isLoading} id={orderId} />
                         </Elements>

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const ShowUserProfileIcon = () => {
     const [user, isLoading] = useAuthState(auth);
-    console.log(user);
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -16,9 +15,9 @@ const ShowUserProfileIcon = () => {
             {
                 user && <div className='flex flex-row gap-3 py-3 bg-zinc-700 items-center justify-end px-5'>
                     <Link to="/dashboard"><p className='text-xl text-white'>Howdy, {user.displayName}</p></Link>
-                    <div class="avatar">
+                    <div className="avatar">
                         <Link to="/dashboard">
-                            <div class="w-8 rounded-full ring ring-primary ring-offset-zinc-700 ring-offset-2">
+                            <div className="w-8 rounded-full ring ring-primary ring-offset-zinc-700 ring-offset-2">
                                 {
                                     user.photoURL
                                         ?

@@ -20,8 +20,8 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full text-xl">
+            <div className="overflow-x-auto">
+                <table className="table w-full text-xl">
                     <thead >
                         <tr className='child:text-lg'>
                             <th>No.</th>

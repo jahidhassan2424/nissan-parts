@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 const CheckOutForm = ({ id }) => {
-    console.log(id);
 
     const stripe = useStripe();
     const elements = useElements()
@@ -27,14 +26,13 @@ const CheckOutForm = ({ id }) => {
             setOrderDetails(data)
         })
     )
-
-
     const { amount, customerName, email, _id, isPaid } = orderDetails;
-    console.log('Amount frm chkt Form', amount);
+
+
     if (isLoading) {
         return <Loading></Loading>
     }
-    else if (!amount) {
+    if (amount === undefined) {
         refetch();
     }
     else if (fetchDone) {
@@ -107,6 +105,7 @@ const CheckOutForm = ({ id }) => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
+                    refetch();
                     toast.success('Payment Successfull');
                 })
         }
@@ -117,10 +116,10 @@ const CheckOutForm = ({ id }) => {
                 options={{
                     style: {
                         base: {
-                            fontSize: '18px',
-                            color: '#000000',
+                            fontSize: '16px',
+                            color: '#a1a4bf',
                             '::placeholder': {
-                                color: '#000000',
+                                color: '#aab7c4',
                             },
                         },
                         invalid: {
@@ -135,7 +134,7 @@ const CheckOutForm = ({ id }) => {
                 }
                 {
 
-                    paymentSuccess && <p className='text-red-500 text-lg mb-2 font-bold'>{paymentSuccess}</p>
+                    paymentSuccess && <p className='text-green-500 text-lg mb-2 font-bold'>{paymentSuccess}</p>
                 }
                 <button className='btn btn-primary font-semibold text-white text-xl w-full' type="submit" disabled={!stripe || !clientSecret || isPaid}>
                     Pay Now

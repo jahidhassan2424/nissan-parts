@@ -90,10 +90,10 @@ const Register = () => {
                                             <button className='border border-zinc-400 px-2 py-1 hover:bg-primary  rounded-lg text-black font-bold' onClick={() => setPasswordBar(makeId(10))}>Suggest a Strong Password</button>
                                         </div>
                                         <div className='text-xl'>
-                                            <div class="form-control">
-                                                <label class="label cursor-pointer">
-                                                    <span class="label-text text-lg">&nbsp; Show Password &nbsp;</span>
-                                                    <input onClick={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} class="checkbox" />
+                                            <div className="form-control">
+                                                <label className="label cursor-pointer">
+                                                    <span className="label-text text-lg">&nbsp; Show Password &nbsp;</span>
+                                                    <input onClick={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
                                                 </label>
                                             </div>
                                         </div>
