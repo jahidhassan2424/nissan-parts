@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import SingleOrder from './SingleOrder';
+import Loading from '../Shared/Loading';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
@@ -14,20 +15,26 @@ const MyOrders = () => {
             .then(data => setMyOrders(data))
 
     })
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div class="overflow-x-auto">
-                <table class="table w-full">
-                    <thead>
-                        <tr>
+                <table class="table w-full text-xl">
+                    <thead >
+                        <tr className='child:text-lg'>
                             <th>No.</th>
                             <th>Product Name</th>
                             <th>Address</th>
                             <th>Qty</th>
-                            <th>Total</th>
+                            <th className='text-center'>Total</th>
+                            <th className='text-center'>Payment Status</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         {
                             myOrders.map((myOrder, index) => <SingleOrder
                                 key={myOrder._id}
@@ -35,8 +42,8 @@ const MyOrders = () => {
                                 index={index}
                             ></SingleOrder>)
                         }
-
                     </tbody>
+
                 </table>
             </div>
         </div>

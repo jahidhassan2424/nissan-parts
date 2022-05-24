@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import SingleTools from '../Home/Tools/SingleTools';
+import Loading from '../Shared/Loading';
 
 const OurProducts = () => {
     const [products, setProducts] = useState([]);
@@ -10,6 +11,9 @@ const OurProducts = () => {
             setProducts(data);
         })
     )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='containerManual'>
             <h1 className='text-4xl font-bold text-center my-20'>All Products We Make</h1>

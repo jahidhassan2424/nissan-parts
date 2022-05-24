@@ -7,6 +7,7 @@ import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
 import { sendEmailVerification } from 'firebase/auth';
 import SendEmail from '../Shared/SendEmail';
+import Loading from '../Shared/Loading';
 
 const Register = () => {
     const [primaryUser] = useAuthState(auth)
@@ -32,6 +33,10 @@ const Register = () => {
         await updateProfile({ displayName }) //Update Display Name
         await sendEmailVerification(); // Send Verification Email
     };
+    if (updating || loading || sending || gLoading) {
+        <Loading></Loading>
+    }
+
     if (primaryUser) {
         <SendEmail
             user={primaryUser}
@@ -40,6 +45,8 @@ const Register = () => {
         ></SendEmail>
         navigate('/')
     }
+
+
 
     return (
         <div>
@@ -73,7 +80,7 @@ const Register = () => {
                                     <input value={passwordBar} type={showPassword ? "text" : "password"} placeholder="Input Password" name='password' className="  input input-bordered text-xl" {...register("password",
                                         {
                                             required: true,
-                                            pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                            // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
                                         })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
