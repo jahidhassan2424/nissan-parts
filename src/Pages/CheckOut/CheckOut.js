@@ -64,7 +64,7 @@ const CheckOut = () => {
                     <h1 className='text-3xl font-bold text-center mt-8'>Payment</h1>
                     <div className="card-body ">
                         <Elements stripe={stripePromise}>
-                            <CheckOutForm refetch={refetch} isLoading={isLoading} id={orderId} />
+                            <CheckOutForm refetch={refetch} isLoading={isLoading} orderDetails={orderDetails} />
                         </Elements>
 
 

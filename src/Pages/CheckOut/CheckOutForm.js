@@ -11,21 +11,15 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-const CheckOutForm = ({ id }) => {
+const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
 
     const stripe = useStripe();
     const elements = useElements()
     const [cardError, setCardError] = useState('');
     const [paymentSuccess, setPaymentSuccess] = useState('');
     const [clientSecret, setClientSecret] = useState('');
-    const [orderDetails, setOrderDetails] = useState([]);
     const [fetchDone, setFetchDone] = useState(true);
-    const { isLoading, refetch } = useQuery('orderDetails', () => fetch(`http://localhost:5000/singleOrder/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            setOrderDetails(data)
-        })
-    )
+
     const { amount, customerName, email, _id, isPaid } = orderDetails;
 
 
