@@ -4,16 +4,18 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './ProductDetails.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import axios from 'axios';
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 import { toast } from 'react-toastify';
+import SendEmail from './../Shared/SendEmail';
+import { Link, useNavigate } from 'react-router-dom';
+import Checkouot from '../CheckOut/CheckOut';
+import CheckOut from '../CheckOut/CheckOut';
 const ProductDetails = ({ product }) => {
-    const { name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
+    const { _id, name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
-    const [Qty, setQty] = useState(minOrder);
     const [qtyError, setQtyError] = useState('');
-    const [customerDetailModal, setCustomerDetailModal] = useState(false);
     const [user] = useAuthState(auth);
+    const [payNow, setPayNow] = useState(false);
+    const navigate = useNavigate();
     const handleQty = (e) => {
         e.preventDefault();
         const quantity = parseInt(e.target.qty.value);
@@ -23,12 +25,20 @@ const ProductDetails = ({ product }) => {
         else {
             setQtyError(null);
             const placeOrderInfo = {
-                name: user.displayName,
+                customerName: user.displayName,
+                productName: name,
+                productId: _id,
+                productBrand: brand,
                 email: user.email,
                 address: e.target.address.value,
                 phone: e.target.phone.value,
-                orderQuantity: e.target.qty.value
+                orderQuantity: e.target.qty.value,
+                amount: totalPrice,
+                isPaid: false,
             }
+
+            console.log(placeOrderInfo);
+
             // Sending Data to database
             const url = `http://localhost:5000/orders`;
             fetch(url, {
@@ -38,18 +48,56 @@ const ProductDetails = ({ product }) => {
                 },
                 body: JSON.stringify(placeOrderInfo)
             })
-                .then(res => res.json())
+                .then(res => {
+                    return res.json();
+
+                })
                 .then(data => {
-                    if (data.acknowledged) {
+                    console.log(data)
+                    const insertedId = data.insertedId;
+                    if (payNow) {
+                        navigate(`/checkout/${insertedId}`)
+                    }
+
+                    if (!(data.acknowledged)) {
+                        // Send order Success Email
+                        const emailBody = {
+                            toEmail: user.email,
+                            subject: "About order",
+                            text: `
+                            Product Info 
+                            Name: ${placeOrderInfo.name}
+                            Email: ${placeOrderInfo.email},
+                            Address: ${placeOrderInfo.address},
+                            Phone: ${placeOrderInfo.phone},
+                            Quantity: ${placeOrderInfo.orderQuantity},
+                            Total Price: ${totalPrice},
+                            Payment Status: ${payNow ? "Paid" : "Not Paid"},
+                            `,
+                        }
+                        console.log(emailBody);
+
+                        fetch(`http://localhost:5000/email`, {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(emailBody)
+                        })
+                            .then(res => res.json())
+                            .then(data => console.log(data))
+
                         toast.success('Order Placed Successfully', {
                             autoClose: 1500
-                        })
+                        });
+                        setPayNow(false);
 
 
                     }
                 })
         }
     }
+
     return (
         <div>
             <div className='grid grid-cols-3 gap-20 items-center'>
@@ -77,7 +125,7 @@ const ProductDetails = ({ product }) => {
                 </div>
                 {/* Element  3*/}
                 <div className='flex flex-cols justify-center ' >
-                    <div className=' w-fit shadow-xl p-10 rounded-xl '>
+                    <div className=' w-full shadow-xl p-10 rounded-xl '>
                         <div className=" ">
                             <form onSubmit={handleQty} >
                                 <h2 className='text-4xl  mb-5 text-center font-bold'>Customer Details</h2>
@@ -104,16 +152,17 @@ const ProductDetails = ({ product }) => {
                                 <label className="label">
                                     <span className="label-text text-xl">Enter Quantity</span>
                                 </label>
-                                <label className="input-group">
-                                    <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" border px-5 border-black text-lg" required />
-                                    <button type="submit" for="customerDetailsOnPurchase" className="modal-button btn btn-primary uppercase text-white font-bold text-xl">Order Now</button>
-                                </label>
-                                <div className="">
+                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" input w-full border px-5 border-black text-lg" required />
+                                {
+                                    qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
+                                }
+
+                                <div className=" mt-3 w-full">
+                                    <button onClick={() => setPayNow(true)} type='submit' className=" mb-5 w-full  btn btn-primary uppercase text-white font-bold text-xl">Proceed To Checkout</button>
+
+                                    <button type="submit" className="w-full  btn btn-neutral uppercase text-white font-bold text-xl">Pay later</button>
                                 </div>
                             </form>
-                            {
-                                qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
-                            }
                             <div className='my-5'>
                                 <p className='text-2xl text-center'>Total Price: ${totalPrice}</p>
                             </div>
@@ -121,6 +170,7 @@ const ProductDetails = ({ product }) => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const SendEmail = ({ user, subject, text }) => {
     const [result, setResult] = useState({})
     const emailBody = {
@@ -7,6 +8,8 @@ const SendEmail = ({ user, subject, text }) => {
         subject: { subject },
         text: { text },
     }
+    console.log(emailBody);
+
     fetch(`http://localhost:5000/email`, {
         method: 'POST',
         headers: {
@@ -15,9 +18,8 @@ const SendEmail = ({ user, subject, text }) => {
         body: JSON.stringify(emailBody)
     })
         .then(res => res.json())
-        .then(data => setResult(data))
-
-
+        .then(data => console.log(data))
 };
+// SendEmail();
 
 export default SendEmail;

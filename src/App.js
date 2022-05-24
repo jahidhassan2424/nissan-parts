@@ -20,6 +20,7 @@ import MyReview from './Pages/Dashboard/MyReview';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
+import Checkouot from './Pages/CheckOut/CheckOut';
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
           <Route path="/dashboard/manage-orders" element={<ManageOrders />} ></Route>
           <Route path="/dashboard/manage-users" element={<ManageUsers />} ></Route>
         </Route>
+        <Route path='/checkout/:orderId' element={
+          <RequireAuth><Checkouot /></RequireAuth>
+        } ></Route>
         <Route path='/blog' element={<Blog />} ></Route>
       </Routes>
       <Footer />

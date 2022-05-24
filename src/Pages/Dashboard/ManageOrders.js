@@ -1,9 +1,13 @@
 import React from 'react';
 
 const ManageOrders = () => {
+
+
     return (
         <div>
-            <h1 className='text-3xl'>Manage Orders</h1>
+            {/* <button onClick={() => fetch(`http://localhost:5000/orders`, {
+                method: 'delete',
+            })} className='btn btn-primary '>DELETE ALL ORDERS</button> */}
         </div>
     );
 };

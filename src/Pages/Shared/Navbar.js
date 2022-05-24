@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
 
+
 const Navbar = () => {
     const [user] = useAuthState(auth);
     const handleSIgnOut = () => {
@@ -14,7 +15,6 @@ const Navbar = () => {
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/reviews">Reviews</NavLink></li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/blogs">Blogs</NavLink> </li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/ContactUs">Contact Us</NavLink></li>
-
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/allProducts">Products</NavLink></li>
         {
             user

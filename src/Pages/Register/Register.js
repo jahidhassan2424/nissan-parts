@@ -24,9 +24,6 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
 
-    // const handleSuggestPass = () => {
-
-    // }
     const onSubmit = async data => {
         const displayName = data.name;
         const email = data.email;
