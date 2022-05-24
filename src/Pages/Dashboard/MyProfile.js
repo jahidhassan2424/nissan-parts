@@ -1,6 +1,8 @@
 import React from 'react';
 
 const MyProfile = () => {
+
+
     return (
         <div>
             <h1 className='text-3xl'>My profile</h1>

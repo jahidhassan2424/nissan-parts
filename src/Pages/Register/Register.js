@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile, useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
 import { sendEmailVerification } from 'firebase/auth';
 
 const Register = () => {
+    const [primaryUser] = useAuthState(auth)
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
@@ -26,18 +27,32 @@ const Register = () => {
 
     // }
     const onSubmit = async data => {
-        console.log(data)
+        console.log(data);
         const displayName = data.name;
         const email = data.email;
         const password = data.password;
         await createUserWithEmailAndPassword(email, password);  // create user
         await updateProfile({ displayName }) //Update Display Name
         await sendEmailVerification(); // Send Verification Email
-
-
+        console.log('Display Name Updated');
     };
-    if (user) {
-        console.log(user.name);
+    if (primaryUser) {
+        const emailBody = {
+            toEmail: primaryUser.email,
+            subject: "About account registration",
+            text: `Welcome to Nissan Parts Family. Your account registration completed successfully.`,
+        }
+        console.log(emailBody);
+
+        fetch(`http://localhost:5000/email`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(emailBody)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
         navigate('/')
     }
 
