@@ -153,7 +153,7 @@ const ProductDetails = ({ product }) => {
                                 <label className="label">
                                     <span className="label-text text-xl">Shipping Address</span>
                                 </label>
-                                <input type="text" placeholder="Type Your Address" className=" text-xl border-black input w-full max-w-full" name='address' required />
+                                <input type="text" value={'BD'} placeholder="Type Your Address" className=" text-xl border-black input w-full max-w-full" name='address' />
                                 {/* Phone number */}
                                 <label className="label">
                                     <span className="label-text text-xl">Phone Number</span>
@@ -162,7 +162,7 @@ const ProductDetails = ({ product }) => {
                                 <label className="label">
                                     <span className="label-text text-xl">Enter Quantity</span>
                                 </label>
-                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" input w-full border px-5 border-black text-lg" required />
+                                <input type="number" value={20} onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" input w-full border px-5 border-black text-lg" required />
                                 {
                                     qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
                                 }

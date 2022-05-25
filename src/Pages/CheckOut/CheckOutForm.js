@@ -17,9 +17,9 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
     const elements = useElements()
     const [cardError, setCardError] = useState('');
     const [paymentSuccess, setPaymentSuccess] = useState('');
+    const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [fetchDone, setFetchDone] = useState(true);
-    const navigate = useNavigate();
     const { amount, customerName, email, _id, isPaid } = orderDetails;
 
 
@@ -91,10 +91,21 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
             setCardError(confirmPaymentError.message);
         }
         else {
+            setTransactionId(paymentIntent.id)
+            const transactionIdDB = paymentIntent.id;
+            console.log(paymentIntent);
+
+            console.log('paymentIntent.id', paymentIntent.id);
+            console.log('transactionId', transactionId);
+
             setCardError('');
             setPaymentSuccess('Congratulations! You have completed your payment successfully');
             fetch(`http://localhost:5000/peymentStatus/${_id}`, {
                 method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ transactionIdDB }),
             })
                 .then(res => res.json())
                 .then(data => {
@@ -131,7 +142,12 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
                 }
                 {
 
-                    paymentSuccess && <p className='text-green-500 text-lg mb-2 font-bold'>{paymentSuccess}</p>
+                    paymentSuccess && <div className='text-green-500 text-lg mb-2 font-bold'>{paymentSuccess}
+
+                    </div>
+                }
+                {
+                    transactionId && <p className='text-black font-bold text-lg mb-3'>Transaction ID: {transactionId}</p>
                 }
                 <button className='btn btn-primary font-semibold text-white text-xl w-full' type="submit" disabled={!stripe || !clientSecret || isPaid}>
                     Pay Now
