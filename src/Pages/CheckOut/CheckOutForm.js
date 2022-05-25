@@ -35,6 +35,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
         fetch(url, {
             method: 'POST',
             headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify({ amount })
@@ -93,23 +94,18 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
         else {
             setTransactionId(paymentIntent.id)
             const transactionIdDB = paymentIntent.id;
-            console.log(paymentIntent);
-
-            console.log('paymentIntent.id', paymentIntent.id);
-            console.log('transactionId', transactionId);
-
             setCardError('');
             setPaymentSuccess('Congratulations! You have completed your payment successfully');
             fetch(`http://localhost:5000/peymentStatus/${_id}`, {
                 method: 'PUT',
                 headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({ transactionIdDB }),
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     refetch();
                     toast.success('Payment Successfull', {
                         autoClose: 1500

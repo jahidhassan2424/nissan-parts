@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle, useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
+import useToken from './../../hooks/useToken';
 const Login = () => {
+    const [globalUser] = useAuthState(auth);
     const [forgetPass, setForgetPass] = useState(false);
     const [forgetPassText, setForgetPassText] = useState("");
     const [passwordError, setPasswordError] = useState('');
@@ -23,17 +25,22 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    //Token
+    const [token] = useToken(user || gUser)
 
     const [showPassword, setShowPassword] = useState(false);
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from, globalUser])
+
 
     if (loading || gLoading) {
         return <Loading></Loading>
     }
-    if (user || gUser) {
-        navigate(from, { replace: true });
-    }
+
     const onSubmit = data => {
-        console.log(data)
         const email = data.email;
         const password = data.password;
         signInWithEmailAndPassword(email, password);

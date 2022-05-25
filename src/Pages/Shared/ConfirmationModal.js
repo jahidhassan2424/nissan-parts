@@ -5,10 +5,12 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
     const handleDeleteOrder = () => {
         fetch(`http://localhost:5000/order/${clickedItem._id}`, {
             method: 'delete',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 toast.success('Order deleted Successfully');
                 setConfirmModal(false);
             })

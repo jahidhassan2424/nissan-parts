@@ -17,7 +17,11 @@ const CheckOut = () => {
     const [orderDetails, setOrderDetails] = useState([]);
 
     // Order Data
-    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:5000/singleOrder/${orderId}`)
+    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:5000/singleOrder/${orderId}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(res => res.json())
         .then(data => setOrderDetails(data))
     )

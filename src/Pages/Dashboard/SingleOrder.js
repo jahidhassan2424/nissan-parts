@@ -15,7 +15,6 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
         navigate(`/checkOut/${id}`)
     }
     const handleDeleteOrder = (id) => {
-        console.log('clicked');
         setConfirmModal(id);
 
 

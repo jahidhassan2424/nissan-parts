@@ -10,10 +10,12 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
-    console.log(confirmModal);
 
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
         fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => setMyOrders(data))
@@ -21,7 +23,11 @@ const MyOrders = () => {
 
     useEffect(() => {
         {
-            confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`)
+            confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => setClickedItem(data))
 

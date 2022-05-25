@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile, useAuthState } from 'react-firebase-hooks/auth';
@@ -8,9 +8,10 @@ import makeId from './SuggestPass';
 import { sendEmailVerification } from 'firebase/auth';
 import SendEmail from '../Shared/SendEmail';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
-    const [primaryUser] = useAuthState(auth)
+    const [globalUser] = useAuthState(auth);
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
@@ -25,6 +26,8 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
 
+    //Token
+    const [token] = useToken(gUser || user)
     const onSubmit = async data => {
         const displayName = data.name;
         const email = data.email;
@@ -33,17 +36,22 @@ const Register = () => {
         await updateProfile({ displayName }) //Update Display Name
         await sendEmailVerification(); // Send Verification Email
     };
+    useEffect(() => {
+        if (token) {
+            navigate('/');
+
+            //Uncomment Below Section to send email on new user creation
+
+            // <SendEmail
+            //     user={primaryUser}
+            //     subject={"Account Registration"}
+            //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
+            // ></SendEmail>
+
+        }
+    }, [token, navigate])
     if (updating || loading || sending || gLoading) {
         <Loading></Loading>
-    }
-
-    if (primaryUser) {
-        <SendEmail
-            user={primaryUser}
-            subject={"Account Registration"}
-            text={"You account has been successfully registered in Nissan Parts. Thank you."}
-        ></SendEmail>
-        navigate('/')
     }
 
 

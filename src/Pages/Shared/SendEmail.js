@@ -8,13 +8,14 @@ const SendEmail = ({ user, subject, text }) => {
         subject: { subject },
         text: { text },
     }
-    console.log(emailBody);
 
     fetch(`http://localhost:5000/email`, {
         method: 'POST',
         headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             'content-type': 'application/json'
         },
+
         body: JSON.stringify(emailBody)
     })
         .then(res => res.json())

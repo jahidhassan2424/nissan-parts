@@ -21,6 +21,7 @@ import MyOrders from './Pages/Dashboard/MyOrders';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import Checkouot from './Pages/CheckOut/CheckOut';
+import RequireAdmin from './Pages/Shared/RequireAdmin';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
+        <Route path='/t' element={<RequireAdmin />} ></Route>
         <Route path='/loading' element={<Loading />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>

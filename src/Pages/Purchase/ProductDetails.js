@@ -19,11 +19,9 @@ const ProductDetails = ({ product }) => {
     const navigate = useNavigate();
     const date = new Date();
     const formatedDate = format(date, 'PP')
-    console.log(formatedDate);
 
     const handleQty = (e) => {
         e.preventDefault();
-        console.log('clicked');
 
         const quantity = parseInt(e.target.qty.value);
         if ((quantity < minOrder) || (quantity > availableQty)) {
@@ -45,15 +43,16 @@ const ProductDetails = ({ product }) => {
                 isPaid: false,
             }
 
-            console.log(placeOrderInfo);
 
             // Sending Data to database
             const url = `http://localhost:5000/orders`;
             fetch(url, {
                 method: 'POST',
                 headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'
                 },
+
                 body: JSON.stringify(placeOrderInfo)
             })
                 .then(res => {
@@ -61,7 +60,6 @@ const ProductDetails = ({ product }) => {
 
                 })
                 .then(data => {
-                    console.log(data)
                     const insertedId = data.insertedId;
                     if (payNow) {
                         navigate(`/checkout/${insertedId}`)
@@ -85,13 +83,14 @@ const ProductDetails = ({ product }) => {
                             Payment Status: ${payNow ? "Paid" : "Not Paid"},
                             `,
                         }
-                        console.log(emailBody);
 
                         fetch(`http://localhost:5000/email`, {
                             method: 'POST',
                             headers: {
+                                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                                 'content-type': 'application/json'
                             },
+
                             body: JSON.stringify(emailBody)
                         })
                             .then(res => res.json())

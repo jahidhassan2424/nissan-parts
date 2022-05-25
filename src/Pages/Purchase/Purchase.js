@@ -9,7 +9,11 @@ import ProductDetails from './ProductDetails';
 const Purchase = () => {
     const { id } = useParams();
     const [product, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`http://localhost:5000/product/${id}`)
+    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`http://localhost:5000/product/${id}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(res => res.json())
         .then(data => {
             setProducts(data);

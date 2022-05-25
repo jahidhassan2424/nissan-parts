@@ -13,7 +13,6 @@ const SingleTools = ({ isLoading, product, refetch }) => {
     }
 
     const handleNavigateToPurchase = (id) => {
-        console.log(id);
         navigate(`/purchase/${id}`);
     }
     return (
