@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import SingleOrder from './SingleOrder';
 import Loading from '../Shared/Loading';
-
+import ConfirmationModal from '../Shared/ConfirmationModal';
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([]);
-    const { isLoading, error } = useQuery('myOrders', () => {
+    const [confirmModal, setConfirmModal] = useState();
+    const [clickedItem, setClickedItem] = useState([]);
+    const { isLoading, error, refetch } = useQuery('myOrders', () => {
         fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
         })
             .then(res => res.json())
             .then(data => setMyOrders(data))
-
     })
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/singleOrder/${confirmModal || ''}`)
+            .then(res => res.json())
+            .then(data => setClickedItem(data))
+
+    }, [confirmModal])
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -41,12 +50,16 @@ const MyOrders = () => {
                                 index={index}
                                 isLoading={isLoading}
                                 id={myOrder._id}
+                                refetch={refetch}
+                                setConfirmModal={setConfirmModal}
                             ></SingleOrder>)
                         }
                     </tbody>
-
                 </table>
             </div>
+            {
+                confirmModal && <ConfirmationModal clickedItem={clickedItem}></ConfirmationModal>
+            }
         </div>
     );
 };

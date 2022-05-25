@@ -16,8 +16,12 @@ const ProductDetails = ({ product }) => {
     const [user] = useAuthState(auth);
     const [payNow, setPayNow] = useState(false);
     const navigate = useNavigate();
+
+    const date = formate('date', 'PP')
     const handleQty = (e) => {
         e.preventDefault();
+        console.log('clicked');
+
         const quantity = parseInt(e.target.qty.value);
         if ((quantity < minOrder) || (quantity > availableQty)) {
             setQtyError(`Quantity Must be between ${minOrder} and ${availableQty}`)
@@ -58,7 +62,9 @@ const ProductDetails = ({ product }) => {
                     if (payNow) {
                         navigate(`/checkout/${insertedId}`)
                     }
-
+                    toast.success('Order placed successfully', {
+                        autoClose: 2000
+                    });
                     if (!(data.acknowledged)) {
                         // Send order Success Email
                         const emailBody = {

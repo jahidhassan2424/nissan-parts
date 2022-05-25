@@ -100,9 +100,10 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
                 .then(data => {
                     console.log(data)
                     refetch();
-                    toast.success('Payment Successfull');
+                    toast.success('Payment Successfull', {
+                        autoClose: 1500
+                    });
                 })
-            navigate('/dashboard/my-orders')
 
         }
     }
