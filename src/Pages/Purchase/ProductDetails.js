@@ -9,6 +9,7 @@ import SendEmail from './../Shared/SendEmail';
 import { Link, useNavigate } from 'react-router-dom';
 import Checkouot from '../CheckOut/CheckOut';
 import CheckOut from '../CheckOut/CheckOut';
+import { format } from 'date-fns';
 const ProductDetails = ({ product }) => {
     const { _id, name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
@@ -16,8 +17,10 @@ const ProductDetails = ({ product }) => {
     const [user] = useAuthState(auth);
     const [payNow, setPayNow] = useState(false);
     const navigate = useNavigate();
+    const date = new Date();
+    const formatedDate = format(date, 'PP')
+    console.log(formatedDate);
 
-    const date = formate('date', 'PP')
     const handleQty = (e) => {
         e.preventDefault();
         console.log('clicked');
@@ -38,6 +41,7 @@ const ProductDetails = ({ product }) => {
                 phone: e.target.phone.value,
                 orderQuantity: e.target.qty.value,
                 amount: totalPrice,
+                orderPlacementDate: formatedDate,
                 isPaid: false,
             }
 

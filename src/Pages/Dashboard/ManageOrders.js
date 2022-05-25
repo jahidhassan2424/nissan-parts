@@ -5,9 +5,9 @@ const ManageOrders = () => {
 
     return (
         <div>
-            {/* <button onClick={() => fetch(`http://localhost:5000/orders`, {
+            <button onClick={() => fetch(`http://localhost:5000/orders`, {
                 method: 'delete',
-            })} className='btn btn-primary '>DELETE ALL ORDERS</button> */}
+            })} className='btn btn-primary '>DELETE ALL ORDERS</button>
         </div>
     );
 };

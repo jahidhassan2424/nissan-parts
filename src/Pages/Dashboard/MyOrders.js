@@ -18,9 +18,12 @@ const MyOrders = () => {
     })
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleOrder/${confirmModal || ''}`)
-            .then(res => res.json())
-            .then(data => setClickedItem(data))
+        {
+
+            confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`)
+                .then(res => res.json())
+                .then(data => setClickedItem(data))
+        }
 
     }, [confirmModal])
 
@@ -38,6 +41,7 @@ const MyOrders = () => {
                             <th>Address</th>
                             <th>Qty</th>
                             <th className='text-center'>Total</th>
+                            <th className='text-center'>Date</th>
                             <th className='text-center'>Payment Status</th>
                             <th>Manage</th>
                         </tr>
@@ -58,7 +62,7 @@ const MyOrders = () => {
                 </table>
             </div>
             {
-                confirmModal && <ConfirmationModal clickedItem={clickedItem}></ConfirmationModal>
+                confirmModal && <ConfirmationModal setConfirmModal={setConfirmModal} clickedItem={clickedItem}></ConfirmationModal>
             }
         </div>
     );
