@@ -16,7 +16,6 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
     }
     const handleDeleteOrder = (id) => {
         console.log('clicked');
-
         setConfirmModal(id);
 
 
@@ -34,7 +33,7 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
             <td className='text-center'>{orderPlacementDate}</td>
             <td className='text-center'>{isPaid ? <button disabled className='btn btn-primary font-bold text-white'>PAID </button> : <button onClick={() => handleNavigate(_id)} className='btn btn-primary font-bold text-white'>PAY </button>}</td>
 
-            <td>{isPaid ? <button disabled className='btn btn-error font-bold text-white'>CANCEL </button> : <label for="confirmationModal" onClick={() => handleDeleteOrder(_id)} to="/" className='btn bg-red-500 border-0 hover:bg-red-700 font-bold text-white'>CANCEL </label>}</td>
+            <td>{isPaid ? <button disabled className='btn btn-error font-bold text-white'>CANCEL </button> : <label for="confirmationModal" onClick={() => handleDeleteOrder(_id)} className='btn bg-red-500 border-0 hover:bg-red-700 font-bold text-white'>CANCEL </label>}</td>
 
         </tr>
 

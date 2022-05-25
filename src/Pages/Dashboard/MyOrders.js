@@ -8,8 +8,10 @@ import ConfirmationModal from '../Shared/ConfirmationModal';
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([]);
-    const [confirmModal, setConfirmModal] = useState();
+    const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
+    console.log(confirmModal);
+
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
         fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
         })
@@ -19,10 +21,10 @@ const MyOrders = () => {
 
     useEffect(() => {
         {
-
             confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`)
                 .then(res => res.json())
                 .then(data => setClickedItem(data))
+
         }
 
     }, [confirmModal])

@@ -1,11 +1,23 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
+    const handleDeleteOrder = () => {
+        fetch(`http://localhost:5000/order/${clickedItem._id}`, {
+            method: 'delete',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Order deleted Successfully');
+                setConfirmModal(false);
+            })
 
+    }
     return (
         <div>
             {/* <!-- The button to open modal --> */}
-            {/* <label class="btn modal-button">open modal</label> */}
+            <label for="confirmationModal" class="btn modal-button">open modal</label>
 
             {/* <!-- Put this part before </body> tag-- > */}
             <input type="checkbox" id="confirmationModal" class="modal-toggle" />
@@ -16,8 +28,8 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
                     <br />
                     <p><b>Note: This action can't be undone!</b></p>
                     <div class="modal-action w-full ">
-                        <label for="confirmationModal " onClick={setConfirmModal(false)} class="btn text-white w-1/4">NO</label>
-                        <label for="confirmationModal w-full " class="w-1/4 btn text-white hover:bg-red-800 bg-red-500 border-0 w-1/3">YES</label>
+                        <label for="confirmationModal " onClick={() => setConfirmModal(false)} class="btn text-white w-1/4">NO</label>
+                        <label onClick={handleDeleteOrder} class="w-1/4 btn text-white hover:bg-red-800 bg-red-500 border-0 w-1/3">YES</label>
 
                     </div>
                 </div>
