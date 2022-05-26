@@ -6,7 +6,7 @@ import SingleReview from './SingleReview';
 
 const ReviewsSection = () => {
     const [reviews, setReviews] = useState([]);
-    const { isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews`, {
+    const { isLoading, refetch } = useQuery('reviews', () => fetch(`https://evening-woodland-82887.herokuapp.com/reviews`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

@@ -31,7 +31,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
     }
     else if (fetchDone) {
         // useEffect(() => {
-        const url = `http://localhost:5000/create-payment-intent`
+        const url = `https://evening-woodland-82887.herokuapp.com/create-payment-intent`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -96,7 +96,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
             const transactionIdDB = paymentIntent.id;
             setCardError('');
             setPaymentSuccess('Congratulations! You have completed your payment successfully');
-            fetch(`http://localhost:5000/peymentStatus/${_id}`, {
+            fetch(`https://evening-woodland-82887.herokuapp.com/peymentStatus/${_id}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

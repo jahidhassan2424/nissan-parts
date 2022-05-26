@@ -17,7 +17,7 @@ const ManageOrders = () => {
     const [confirmModal, setConfirmModal] = useState('');
     const [clickedItem, setClickedItem] = useState([]);
 
-    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:5000/orders`, {
+    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`https://evening-woodland-82887.herokuapp.com/orders`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -28,7 +28,7 @@ const ManageOrders = () => {
         })
     )
     useEffect(async () => {
-        fetch(`http://localhost:5000/singleOrder/${confirmModal}`, {
+        fetch(`https://evening-woodland-82887.herokuapp.com/singleOrder/${confirmModal}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

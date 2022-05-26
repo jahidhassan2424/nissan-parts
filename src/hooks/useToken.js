@@ -25,7 +25,7 @@ const useToken = variableUser => {
         const currentUser = { name, email }
 
         if (name) {
-            fetch(`http://localhost:5000/users/${email}`, {
+            fetch(`https://evening-woodland-82887.herokuapp.com/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

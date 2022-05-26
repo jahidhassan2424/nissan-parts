@@ -7,7 +7,7 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
 
     //Change Shipment status
     const handleShip = (_id) => {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://evening-woodland-82887.herokuapp.com/order/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

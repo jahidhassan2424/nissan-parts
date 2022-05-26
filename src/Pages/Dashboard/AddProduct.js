@@ -6,7 +6,7 @@ const AddProduct = () => {
 
     const onSubmit = orderInfo => {
         console.log(orderInfo)
-        fetch(`http://localhost:5000/products`, {
+        fetch(`https://evening-woodland-82887.herokuapp.com/products`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -17,7 +17,7 @@ const CheckOut = () => {
     const [orderDetails, setOrderDetails] = useState([]);
 
     // Order Data
-    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:5000/singleOrder/${orderId}`, {
+    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`https://evening-woodland-82887.herokuapp.com/singleOrder/${orderId}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

@@ -11,7 +11,7 @@ const MyOrders = () => {
     const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
-        fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
+        fetch(`https://evening-woodland-82887.herokuapp.com/myOrders?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const MyOrders = () => {
     })
     useEffect(() => {
         {
-            confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`, {
+            confirmModal && fetch(`https://evening-woodland-82887.herokuapp.com/singleOrder/${confirmModal}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

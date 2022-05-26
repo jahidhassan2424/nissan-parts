@@ -6,7 +6,7 @@ const ManageSingleProducts = ({ p, index, refetch }) => {
     const handleDelete = id => {
         const confirmation = window.confirm('Are you sure?');
         if (confirmation) {
-            fetch(`http://localhost:5000/product/${id}`, {
+            fetch(`https://evening-woodland-82887.herokuapp.com/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

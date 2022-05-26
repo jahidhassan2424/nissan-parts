@@ -12,7 +12,7 @@ const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
-    const { isLoading, refetch } = useQuery('users', () => fetch(`http://localhost:5000/users`, {
+    const { isLoading, refetch } = useQuery('users', () => fetch(`https://evening-woodland-82887.herokuapp.com/users`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

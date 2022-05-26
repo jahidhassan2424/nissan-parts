@@ -46,7 +46,7 @@ const ProductDetails = ({ product }) => {
 
 
             // Sending Data to database
-            const url = `http://localhost:5000/orders`;
+            const url = `https://evening-woodland-82887.herokuapp.com/orders`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -85,7 +85,7 @@ const ProductDetails = ({ product }) => {
                             `,
                         }
 
-                        fetch(`http://localhost:5000/email`, {
+                        fetch(`https://evening-woodland-82887.herokuapp.com/email`, {
                             method: 'POST',
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

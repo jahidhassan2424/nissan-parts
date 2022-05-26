@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 
 const OurProducts = () => {
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`https://evening-woodland-82887.herokuapp.com/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);
