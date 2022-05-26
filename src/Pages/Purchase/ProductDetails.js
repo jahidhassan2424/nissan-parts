@@ -41,6 +41,7 @@ const ProductDetails = ({ product }) => {
                 amount: totalPrice,
                 orderPlacementDate: formatedDate,
                 isPaid: false,
+                isShiped: false,
             }
 
 

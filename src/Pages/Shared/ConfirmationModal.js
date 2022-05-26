@@ -11,11 +11,12 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success('Order deleted Successfully');
+                toast.success('Order deleted Successfully', {
+                    autoClose: 1500
+                });
                 refetch();
-                setConfirmModal(false);
+                setConfirmModal('');
             })
-
     }
     return (
         <div>
@@ -31,8 +32,8 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal, refetch }) => {
                     <br />
                     <p><b>Note: This action can't be undone!</b></p>
                     <div className="modal-action w-full ">
-                        <label for="confirmationModal " onClick={() => setConfirmModal(false)} className="btn text-white w-1/4">NO</label>
-                        <label onClick={handleDeleteOrder} className="w-1/4 btn text-white hover:bg-red-800 bg-red-500 border-0 w-1/3">YES</label>
+                        <label for="confirmationModal" onClick={() => setConfirmModal('')} className="btn text-white w-1/4">NO</label>
+                        <label for="confirmationModal" onClick={handleDeleteOrder} className="w-1/4 btn text-white hover:bg-red-800 bg-red-500 border-0 w-1/3">YES</label>
 
                     </div>
                 </div>

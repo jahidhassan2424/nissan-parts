@@ -44,7 +44,9 @@ const MyProfile = () => {
                 if (profileUpdateData.acknowledged) {
                     refetch();
                     setEditForm(false);
-                    toast.success("Profile updated successfully");
+                    toast.success("Profile updated successfully", {
+                        autoClose: 1500
+                    });
                 }
             })
         setProcessing(false);
