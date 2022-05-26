@@ -38,9 +38,9 @@ const MyOrders = () => {
         <div>
             <h1 className='text-5xl my-5 font-bold mt-20 text-center'>Your Orders</h1>
             <div className="overflow-x-auto">
-                <table className="table w-full text-xl">
+                <table className="table w-full text-lg">
                     <thead >
-                        <tr className='child:text-lg'>
+                        <tr className='child:text-md'>
                             <th>No.</th>
                             <th>Product Name</th>
                             <th>Address</th>
@@ -67,7 +67,7 @@ const MyOrders = () => {
                 </table>
             </div>
             {
-                confirmModal && <ConfirmationModal setConfirmModal={setConfirmModal} clickedItem={clickedItem}></ConfirmationModal>
+                confirmModal && <ConfirmationModal refetch={refetch} setConfirmModal={setConfirmModal} clickedItem={clickedItem}></ConfirmationModal>
             }
         </div>
     );

@@ -18,7 +18,7 @@ const ReviewsSection = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='mt-20'>
+        <div className='mt-20 max-h-[1000px] overflow-auto'>
             <h1 className='text-4xl font-bold text-center mb-5'>Our Reviews</h1>
             <div class="overflow-x-auto w-full">
                 <table class="table w-full">

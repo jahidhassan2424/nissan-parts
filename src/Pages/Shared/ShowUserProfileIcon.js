@@ -10,7 +10,7 @@ const ShowUserProfileIcon = () => {
     const [user, isLoading] = useAuthState(auth);
     const [userInfo, setUserInfo] = useState([]);
 
-    const { refetch, isLoading: userInfoLoading } = useQuery('userInfo', () => fetch(`http://localhost:5000/users/${user.email || ''}`, {
+    const { refetch, isLoading: userInfoLoading } = useQuery('userInfo', () => fetch(`http://localhost:5000/users/${user?.email || ''}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -22,13 +22,13 @@ const ShowUserProfileIcon = () => {
     )
 
     if (isLoading || userInfoLoading) {
-        return <Loading></Loading>
+        return <Loading imgWidth={"3%"}></Loading >
     }
     return (
         <div>
             {
                 user && <div className='flex flex-row gap-3 py-3 bg-zinc-700 items-center justify-end px-5'>
-                    <Link to="/dashboard"><p className='text-xl text-white'>Howdy, {userInfo ? userInfo.displayName : user.info}</p></Link>
+                    <Link to="/dashboard"><p className='text-xl text-white'>Howdy, {userInfo.displayName || user.info}</p></Link>
                     <div className="avatar">
                         <Link to="/dashboard">
                             <div className="w-8 rounded-full ring ring-primary ring-offset-zinc-700 ring-offset-2">

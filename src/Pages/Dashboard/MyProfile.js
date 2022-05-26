@@ -4,7 +4,7 @@ import auth from './../../firebase.init';
 import avater from '../../images/avater.png';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import './MyProfile.css'
+import './MyProfileOnly.css'
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from './../Shared/Loading';
@@ -61,7 +61,7 @@ const MyProfile = () => {
                 <div class="w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
-                <h2 className='text-5xl'>{userInfo.displayName}</h2>
+                <h2 className='text-5xl'>{userInfo.displayName || user.displayName}</h2>
             </div>
             <div class="overflow-x-auto">
 
@@ -77,8 +77,8 @@ const MyProfile = () => {
                 {/* Edit Form Deactivated */}
                 {
                     !editForm && <div className='flex justify-center mt-10'>
-                        <table className='child:text-2xl w-1/3  '>
-                            <tr className='tr'>
+                        <table className='child:text-2xl w-1/3 c myProfileTable '>
+                            <tr className=''>
                                 <td className='pr-2'>Name</td>
                                 <td>
                                     <input disabled value={userInfo.displayName || "Not set yet"} type="text" placeholder="Name" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
@@ -98,8 +98,7 @@ const MyProfile = () => {
                                 <td>Address</td>
                                 <td>
                                     <input disabled value={userInfo.address || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
-                                </td>
-                            </tr>
+                                </td>                            </tr>
                             {/* Phone  */}
                             <tr>
                                 <td>Phone</td>
@@ -143,7 +142,7 @@ const MyProfile = () => {
                 }
                 {
                     editForm && <form className='flex justify-center mt-10' onSubmit={handleSubmit(onEditedProfileDataSubmit)}>
-                        <table className='child:text-2xl w-1/3  '>
+                        <table className='child:text-2xl w-1/3 myProfileTable '>
                             <tr className='tr'>
                                 <td className='pr-2'>Name</td>
                                 <td>

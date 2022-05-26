@@ -3,6 +3,7 @@ import Banner from '../Banner';
 import Category from '../Category/Category';
 import ToolPart from '../Tools/ToolPart';
 import ReviewsSection from './ReviewsSection';
+import BusinessSummary from './BusinessSummary';
 
 const Home = () => {
 
@@ -15,6 +16,7 @@ const Home = () => {
             </div>
             <ToolPart></ToolPart>
             <ReviewsSection></ReviewsSection>
+            <BusinessSummary></BusinessSummary>
         </div>
     );
 };

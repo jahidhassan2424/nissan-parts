@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
+const ConfirmationModal = ({ clickedItem, setConfirmModal, refetch }) => {
     const handleDeleteOrder = () => {
         fetch(`http://localhost:5000/order/${clickedItem._id}`, {
             method: 'delete',
@@ -12,6 +12,7 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Order deleted Successfully');
+                refetch();
                 setConfirmModal(false);
             })
 
@@ -19,7 +20,7 @@ const ConfirmationModal = ({ clickedItem, setConfirmModal }) => {
     return (
         <div>
             {/* <!-- The button to open modal --> */}
-            <label for="confirmationModal" class="btn modal-button">open modal</label>
+            {/* <label for="confirmationModal" class="btn modal-button">open modal</label> */}
 
             {/* <!-- Put this part before </body> tag-- > */}
             <input type="checkbox" id="confirmationModal" class="modal-toggle" />
