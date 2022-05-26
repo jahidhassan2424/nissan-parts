@@ -25,7 +25,7 @@ const ShowUserProfileIcon = () => {
         return <Loading imgWidth={"3%"}></Loading >
     }
     return (
-        <div>
+        <div className='relative'>
             {
                 user && <div className='flex flex-row gap-3 py-3 bg-zinc-700 items-center justify-end px-5'>
                     <Link to="/dashboard"><p className='text-xl text-white'>Howdy, {userInfo.displayName || user.displayName}</p></Link>

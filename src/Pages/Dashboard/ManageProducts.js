@@ -1,21 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
+import ManageSingleProducts from './ManageSingleProducts';
 
 const ManageProducts = () => {
     // Order Data
-    // const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:5000/singleOrder/${orderId}`, {
-    //     headers: {
-    //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
-    //     }
-    // })
-    //     .then(res => res.json())
-    //     // .then(data => setOrderDetails(data))
-    // )
-    // return (
-    //     <div>
+    const [products, setProducts] = useState([]);
+    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/products`)
+        .then(res => res.json())
+        .then(data => {
+            setProducts(data);
+        })
+    )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    return (
+        <div>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Manage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            products.map((p, index) => <ManageSingleProducts
+                                key={p._id}
+                                p={p}
+                                refetch={refetch}
+                                index={index}
+                            ></ManageSingleProducts>)
+                        }
 
-    // </div >
-    // );
+                    </tbody>
+                </table>
+            </div>
+        </div >
+    );
 };
 
 export default ManageProducts;

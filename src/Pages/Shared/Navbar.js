@@ -29,7 +29,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar containerManual ">
+        <div className="navbar lg:containerManual ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -39,10 +39,9 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to="/" className="font-bold normal-case text-4xl">NISSAN PARTS</Link>
+                <Link to="/" className="font-bold normal-case text-2xl lg:text-4xl ">NISSAN PARTS</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <label for="confirmationModal" className="btn modal-button">open modal</label>
                 <ul className="menu menu-horizontal p-0 text-xl">
                     {navItems}
 

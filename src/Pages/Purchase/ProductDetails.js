@@ -110,7 +110,7 @@ const ProductDetails = ({ product }) => {
 
     return (
         <div>
-            <div className='grid grid-cols-3 gap-20 items-center'>
+            <div className='grid grid-cols-1 mt lg:grid-cols-3 gap-20 items-center'>
                 {/* Element  1*/}
                 <div className='shadow-xl rounded-xl '>
                     <img src={product.img} className="max-w-cover rounded-lg " />
@@ -135,7 +135,7 @@ const ProductDetails = ({ product }) => {
                 </div>
                 {/* Element  3*/}
                 <div className='flex flex-cols justify-center ' >
-                    <div className=' w-full shadow-xl p-10 rounded-xl '>
+                    <div className=' w-full shadow-xl lg:p-10 p-5 rounded-xl '>
                         <div className=" ">
                             <form onSubmit={handleQty} >
                                 <h2 className='text-4xl  mb-5 text-center font-bold'>Customer Details</h2>

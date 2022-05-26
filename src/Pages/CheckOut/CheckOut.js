@@ -34,10 +34,10 @@ const CheckOut = () => {
         <div className='containerManual mt-20'>
             <h1 className='text-5xl font-bold text-center mb-20'>Checkout</h1>
             {/* <div className='grid lg:grid-col-2 grid-col-1 gap-10 grid-flow-row'> */}
-            <div className='flex flex-col gap-10 lg:flex-row justify-center'>
+            <div className='flex flex-col  lg:gap-10 lg:flex-row justify-center'>
                 <div className="card w-1/3 bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <h2 className=" text-3xl font-bold text-center mb-5">Your Order Details {isPaid && <span className="badge badge-primary text-white">Paid</span>}</h2>
+                        <h2 className=" text-3xl font-bold text-center lg:mb-5">Your Order Details {isPaid && <span className="badge badge-primary text-white">Paid</span>}</h2>
                         <div className="overflow-x-auto">
                             <div className="flex flex-col w-full border-opacity-50">
                                 <div className="divider text-xl"></div>

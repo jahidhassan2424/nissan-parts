@@ -60,7 +60,7 @@ const MyProfile = () => {
         <div>
             <h2 className='text-5xl font-bold mt-20 text-center'>Your Profile</h2>
             <div className="avatar mt-5 flex justify-center flex-col items-center gap-10">
-                <div className="w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <div className="w-1/2 lg:w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
                 <h2 className='text-5xl'>{userInfo.displayName || user.displayName}</h2>
@@ -79,7 +79,7 @@ const MyProfile = () => {
                 {/* Edit Form Deactivated */}
                 {
                     !editForm && <div className='flex justify-center mt-10'>
-                        <table className='child:text-2xl w-1/3 c myProfileTable '>
+                        <table className='child:text-2xl w-full lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className=''>
                                 <td className='pr-2'>Name</td>
                                 <td>
@@ -144,7 +144,7 @@ const MyProfile = () => {
                 }
                 {
                     editForm && <form className='flex justify-center mt-10' onSubmit={handleSubmit(onEditedProfileDataSubmit)}>
-                        <table className='child:text-2xl w-1/3 myProfileTable '>
+                        <table className='child:text-2xl lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className='tr'>
                                 <td className='pr-2'>Name</td>
                                 <td>

@@ -64,7 +64,7 @@ const MyReview = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='flex justify-center flex-col items-center w-full'>
+        <div className='flex justify-center flex-col items-center w-full '>
             <h2 className='text-5xl font-bold mt-20'>Add a Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full ">
@@ -83,7 +83,7 @@ const MyReview = () => {
                     <label className="label">
                         <span className="text-xl">Message </span>
                     </label>
-                    <textarea className='border-2 text-xl border-zinc-300 p-3 shadow-xl rounded-xl' name="description" id="" cols="70" rows="10"
+                    <textarea className='border-2 w-full  text-xl border-zinc-300 p-3 shadow-xl rounded-xl' name="description" id="" cols="70" rows="10"
                         {...register("description", { required: true })} ></textarea>
                 </div>
 

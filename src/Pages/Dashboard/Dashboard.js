@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [admin] = useAdmin(user);
 
     return (
-        <div>
+        <div >
 
             {/* <h1 className='text-5xl my-10  font-bold text-center'>This is your Dashboard</h1> */}
             <div className="drawer drawer-mobile">
@@ -19,8 +19,7 @@ const Dashboard = () => {
                 <div className="drawer-content ">
                     {/* <!-- Page content here --> */}
                     <Outlet />
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button absolute top-0 left-0 lg:hidden">Open drawer</label>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -29,7 +28,6 @@ const Dashboard = () => {
 
                         {/* My Profile  */}
                         <li><Link to="/dashboard" className='text-xl'><FontAwesomeIcon icon={faUser} />My Profile</Link></li>
-
                         {/* My Orders  */}
                         {
                             !admin && <div>

@@ -4,7 +4,7 @@ const Portfolio = () => {
 
     return (
         <div>
-            <div className='mx-28 my-16'>
+            <div className='lg:mx-28 mx-2 my-16'>
                 <div className='my-16'>
                     <h3 className="text-5xl font-bold  text-center my-3 text-primary">A few words about me</h3>
                     <h2 className='text-3xl text-center font-bold'>I'm <b>Jahid Hassan</b>, a multidisciplinary developer and designer who focuses on telling my clients' stories visually, through enjoyable and meaningful experiences. I specialize in responsive react js SPA and unique user interfaces.</h2>
@@ -53,7 +53,7 @@ const Portfolio = () => {
 
                 <h1 className='text-3xl font-bold mt-32 text-center uppercase'>Some of my awesome creations</h1>
                 <div>
-                    <div className='flex flex-row justify-center gap-10 justify-items-center mt-10'>
+                    <div className='flex flex-col lg:flex-row justify-center gap-10 justify-items-center mt-10'>
 
                         {/* greensports */}
                         {/* https://green-sports-18e07.web.app/ */}
