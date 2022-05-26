@@ -10,7 +10,6 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
-
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
         fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
             headers: {
@@ -20,7 +19,6 @@ const MyOrders = () => {
             .then(res => res.json())
             .then(data => setMyOrders(data))
     })
-
     useEffect(() => {
         {
             confirmModal && fetch(`http://localhost:5000/singleOrder/${confirmModal}`, {
@@ -30,9 +28,7 @@ const MyOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => setClickedItem(data))
-
         }
-
     }, [confirmModal])
 
     if (isLoading) {
@@ -40,6 +36,7 @@ const MyOrders = () => {
     }
     return (
         <div>
+            <h1 className='text-5xl my-5 font-bold mt-20 text-center'>Your Orders</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full text-xl">
                     <thead >

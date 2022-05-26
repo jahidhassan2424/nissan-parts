@@ -27,7 +27,6 @@ const Register = () => {
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
 
     //Token
-    const [token] = useToken(gUser || user)
     const onSubmit = async data => {
         const displayName = data.name;
         const email = data.email;
@@ -36,6 +35,11 @@ const Register = () => {
         await updateProfile({ displayName }) //Update Display Name
         await sendEmailVerification(); // Send Verification Email
     };
+    const [token] = useToken(user || gUser)
+    // if (gUser || user) {
+    //     console.log(gUser || user);
+
+    // }
     useEffect(() => {
         if (token) {
             navigate('/');
@@ -50,11 +54,14 @@ const Register = () => {
 
         }
     }, [token, navigate])
+
+    if (error) {
+        console.log(error);
+
+    }
     if (updating || loading || sending || gLoading) {
         <Loading></Loading>
     }
-
-
 
     return (
         <div>

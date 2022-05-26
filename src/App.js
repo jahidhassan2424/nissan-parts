@@ -22,6 +22,7 @@ import ManageUsers from './Pages/Dashboard/ManageUsers';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import Checkouot from './Pages/CheckOut/CheckOut';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <RequireAuth><Checkouot /></RequireAuth>
         } ></Route>
         <Route path='/blog' element={<Blog />} ></Route>
+        <Route path='*' element={<NotFound />} ></Route>
       </Routes>
       <Footer />
       <ToastContainer />

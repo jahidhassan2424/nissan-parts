@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import Banner from '../Banner';
 import Category from '../Category/Category';
 import ToolPart from '../Tools/ToolPart';
+import ReviewsSection from './ReviewsSection';
 
 const Home = () => {
 
@@ -12,9 +13,8 @@ const Home = () => {
                 <div className='col-1'><Category /></div>
                 <div style={{}}><Banner /></div>
             </div>
-            <ToolPart
-
-            ></ToolPart>
+            <ToolPart></ToolPart>
+            <ReviewsSection></ReviewsSection>
         </div>
     );
 };

@@ -9,10 +9,12 @@ import auth from './../../firebase.init';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+    console.log('dashboard IsAdmin:', admin);
+
     return (
         <div>
 
-            <h1 className='text-5xl my-10  font-bold text-center'>This is your Dashboard</h1>
+            {/* <h1 className='text-5xl my-10  font-bold text-center'>This is your Dashboard</h1> */}
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">

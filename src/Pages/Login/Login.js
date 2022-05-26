@@ -33,7 +33,7 @@ const Login = () => {
         if (token) {
             navigate(from, { replace: true });
         }
-    }, [token, navigate, from, globalUser])
+    }, [token, navigate, from])
 
 
     if (loading || gLoading) {

@@ -15,7 +15,7 @@ const useAdmin = user => {
                 .then(res => res.json())
                 .then(data => {
                     setAdmin(data);
-                    console.log(data);
+                    console.log('isadmin:', data);
 
                 })
         }

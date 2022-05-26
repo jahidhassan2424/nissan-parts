@@ -1,7 +1,9 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import useAdmin from './../hooks/useAdmin';
 
 const SingleUser = ({ user, index, refetch }) => {
+    const [admin] = useAdmin(user);
     const { email, role } = user;
 
 
@@ -51,7 +53,7 @@ const SingleUser = ({ user, index, refetch }) => {
     return (
         <tr className='child:text-lg'>
             <th>{index + 1}</th>
-            <td>{email}</td>
+            <td>{email}&nbsp;{admin && <span class="badge badge-primary text-white font-bold">Admin</span>}</td>
             <td>
                 {(role !== 'admin')
                     ?
