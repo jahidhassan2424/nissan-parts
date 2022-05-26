@@ -23,6 +23,9 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import Checkouot from './Pages/CheckOut/CheckOut';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
 import NotFound from './Pages/Shared/NotFound';
+import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
+import Portfolio from './Pages/Portfolio';
 
 function App() {
   return (
@@ -37,6 +40,7 @@ function App() {
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
         <Route path='/allProducts' element={<OurProducts />} ></Route>
+        <Route path='/portfolio' element={<Portfolio />} ></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase /></RequireAuth>} ></Route>
         <Route path='/dashboard' element={
@@ -47,6 +51,7 @@ function App() {
           <Route path="/dashboard/my-orders" element={<MyOrders />} ></Route>
           <Route path="/dashboard/manage-orders" element={<ManageOrders />} ></Route>
           <Route path="/dashboard/manage-users" element={<ManageUsers />} ></Route>
+          <Route path="/dashboard/manage-products" element={<ManageProducts />} ></Route>
         </Route>
         <Route path='/checkout/:orderId' element={
           <RequireAuth><Checkouot /></RequireAuth>

@@ -29,7 +29,7 @@ const ManageUsers = () => {
                 admin
                     ?
                     <div>
-                        <h1 className='text-3xl mb-5 font-bold'>All Users Listed Below</h1>
+                        <h1 className='text-4xl mb-5 font-bold text-center'>Manage all Users</h1>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>

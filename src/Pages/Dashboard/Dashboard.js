@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping, faBoxOpen, faPenNib, faUser, faUsersGear } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faBoxOpen, faPenNib, faUser, faUsersGear, faCubesStacked, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import useAdmin from './../hooks/useAdmin';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
@@ -50,7 +50,18 @@ const Dashboard = () => {
 
                                 {/* Manage Users  */}
                                 <li><Link to="/dashboard/manage-users" className='text-xl'>
-                                    <FontAwesomeIcon icon={faUsersGear} />Manage Users</Link></li>
+                                    <FontAwesomeIcon icon={faUsersGear} />Manage Users</Link>
+                                </li>
+
+                                {/* Add Products   */}
+                                <li><Link to="/dashboard/add-product" className='text-xl'>
+                                    <FontAwesomeIcon icon={faPlusCircle} />Add Product</Link>
+                                </li>
+
+                                {/* Manage Products  */}
+                                <li><Link to="/dashboard/manage-products" className='text-xl'>
+                                    <FontAwesomeIcon icon={faCubesStacked} />Manage Products</Link>
+                                </li>
                             </div>
                         }
 

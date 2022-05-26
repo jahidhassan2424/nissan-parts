@@ -14,8 +14,8 @@ const Navbar = () => {
     const navItems = <>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/home">Home</NavLink></li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/blogs">Blogs</NavLink> </li>
-        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/ContactUs">Contact Us</NavLink></li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/allProducts">Products</NavLink></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/portfolio">Portfolio</NavLink></li>
         {
             user
                 ?
@@ -42,8 +42,10 @@ const Navbar = () => {
                 <Link to="/" className="font-bold normal-case text-4xl">NISSAN PARTS</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
+                <label for="confirmationModal" className="btn modal-button">open modal</label>
                 <ul className="menu menu-horizontal p-0 text-xl">
                     {navItems}
+
                 </ul>
             </div>
 

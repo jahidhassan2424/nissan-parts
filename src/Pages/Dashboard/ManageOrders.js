@@ -46,11 +46,12 @@ const ManageOrders = () => {
     }
 
     return (
-        <div>
+        <div className='mt-20'>
             {
                 admin
                     ?
                     <div>
+                        <h1 className='text-4xl font-bold text-center mb-5'>Manage all Orders</h1>
                         <div class="overflow-x-auto">
                             <table class="table w-full">
                                 <thead>
