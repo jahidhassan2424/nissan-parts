@@ -67,11 +67,11 @@ const MyReview = () => {
         <div className='flex justify-center flex-col items-center w-full'>
             <h2 className='text-5xl font-bold mt-20'>Add a Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control w-full ">
-                    <label class="label">
-                        <span class="text-xl">Rating </span>
+                <div className="form-control w-full ">
+                    <label className="label">
+                        <span className="text-xl">Rating </span>
                     </label>
-                    <select class="select w-full  border-2 border-zinc-300 child:text-xl text-xl"
+                    <select className="select w-full  border-2 border-zinc-300 child:text-xl text-xl"
                         {...register("rating", { required: true })}>
                         <option disabled selected>Select One</option>
                         <option>1</option>
@@ -80,8 +80,8 @@ const MyReview = () => {
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    <label class="label">
-                        <span class="text-xl">Message </span>
+                    <label className="label">
+                        <span className="text-xl">Message </span>
                     </label>
                     <textarea className='border-2 text-xl border-zinc-300 p-3 shadow-xl rounded-xl' name="description" id="" cols="70" rows="10"
                         {...register("description", { required: true })} ></textarea>

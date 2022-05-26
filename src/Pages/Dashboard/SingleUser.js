@@ -53,7 +53,7 @@ const SingleUser = ({ user, index, refetch }) => {
     return (
         <tr className='child:text-lg'>
             <th>{index + 1}</th>
-            <td>{email}&nbsp;{admin && <span class="badge badge-primary text-white font-bold">Admin</span>}</td>
+            <td>{email}&nbsp;{admin && <span className="badge badge-primary text-white font-bold">Admin</span>}</td>
             <td>
                 {(role !== 'admin')
                     ?

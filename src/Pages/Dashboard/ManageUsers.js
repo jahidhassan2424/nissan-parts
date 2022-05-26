@@ -30,8 +30,8 @@ const ManageUsers = () => {
                     ?
                     <div>
                         <h1 className='text-3xl mb-5 font-bold'>All Users Listed Below</h1>
-                        <div class="overflow-x-auto">
-                            <table class="table w-full">
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
                                 <thead>
                                     <tr className='child:text-lg'>
                                         <th>No.</th>

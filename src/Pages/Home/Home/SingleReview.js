@@ -7,15 +7,15 @@ const SingleReview = ({ review, index }) => {
         <tr className='  border-b-2'>
             <td>{index + 1}</td>
             <td>
-                <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                             <img src={userPhotoUrl || avatar} alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold">{reviewerName}</div>
-                        <div class="text-[20px] opacity-80 ">Rating: {rating}/5</div>
+                        <div className="font-bold">{reviewerName}</div>
+                        <div className="text-[20px] opacity-80 ">Rating: {rating}/5</div>
                     </div>
                 </div>
             </td>

@@ -9,7 +9,6 @@ import auth from './../../firebase.init';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
-    console.log('dashboard IsAdmin:', admin);
 
     return (
         <div>

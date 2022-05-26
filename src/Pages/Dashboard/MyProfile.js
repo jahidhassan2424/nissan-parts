@@ -57,19 +57,19 @@ const MyProfile = () => {
     return (
         <div>
             <h2 className='text-5xl font-bold mt-20 text-center'>Your Profile</h2>
-            <div class="avatar mt-5 flex justify-center flex-col items-center gap-10">
-                <div class="w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="avatar mt-5 flex justify-center flex-col items-center gap-10">
+                <div className="w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
                 <h2 className='text-5xl'>{userInfo.displayName || user.displayName}</h2>
             </div>
-            <div class="overflow-x-auto">
+            <div className="overflow-x-auto">
 
                 <div className='flex justify-around items-center justify-items-center'>
-                    <div class="form-control">
-                        <label class="cursor-pointer label">
-                            <span class="label-text text-xl">Edit Form</span>
-                            <input onChange={() => setEditForm(!editForm)} type="checkbox" checked={editForm} class="checkbox checkbox-accent" />
+                    <div className="form-control">
+                        <label className="cursor-pointer label">
+                            <span className="label-text text-xl">Edit Form</span>
+                            <input onChange={() => setEditForm(!editForm)} type="checkbox" checked={editForm} className="checkbox checkbox-accent" />
                         </label>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ const MyProfile = () => {
                             <tr className=''>
                                 <td className='pr-2'>Name</td>
                                 <td>
-                                    <input disabled value={userInfo.displayName || "Not set yet"} type="text" placeholder="Name" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.displayName || "Not set yet"} type="text" placeholder="Name" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -89,7 +89,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>Email</td>
                                 <td>
-                                    <input disabled value={userInfo.email || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.email || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -97,13 +97,13 @@ const MyProfile = () => {
                             <tr>
                                 <td>Address</td>
                                 <td>
-                                    <input disabled value={userInfo.address || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.address || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>                            </tr>
                             {/* Phone  */}
                             <tr>
                                 <td>Phone</td>
                                 <td>
-                                    <input disabled value={userInfo.phone || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.phone || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -111,7 +111,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>Education Institute</td>
                                 <td>
-                                    <input disabled value={userInfo.institute || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.institute || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -119,7 +119,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>LinkedIn Profile</td>
                                 <td>
-                                    <input disabled value={userInfo.linkedIn || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.linkedIn || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -127,7 +127,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>Facebook</td>
                                 <td>
-                                    <input disabled value={userInfo.facebook || "Not set yet"} type="text" placeholder="Email" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.facebook || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
                                 </td>
                             </tr>
 
@@ -146,7 +146,7 @@ const MyProfile = () => {
                             <tr className='tr'>
                                 <td className='pr-2'>Name</td>
                                 <td>
-                                    <input type="text" placeholder="Name" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("displayName")} />
+                                    <input type="text" placeholder="Name" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("displayName")} />
                                 </td>
                             </tr>
 
@@ -155,14 +155,14 @@ const MyProfile = () => {
                             <tr>
                                 <td>Address</td>
                                 <td>
-                                    <input type="text" placeholder="Your Address" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("address")} />
+                                    <input type="text" placeholder="Your Address" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("address")} />
                                 </td>
                             </tr>
                             {/* Phone  */}
                             <tr>
                                 <td>Phone</td>
                                 <td>
-                                    <input type="number" placeholder="Phone number" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("phone")} />
+                                    <input type="number" placeholder="Phone number" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("phone")} />
                                 </td>
                             </tr>
 
@@ -170,7 +170,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>Education Institute</td>
                                 <td>
-                                    <input type="text" placeholder="Educational Institution" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("institute")} />
+                                    <input type="text" placeholder="Educational Institution" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("institute")} />
                                 </td>
                             </tr>
 
@@ -178,7 +178,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>LinkedIn Profile</td>
                                 <td>
-                                    <input type="text" placeholder="LinkedIn Profile Link" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("linkedIn")} />
+                                    <input type="text" placeholder="LinkedIn Profile Link" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("linkedIn")} />
                                 </td>
                             </tr>
 
@@ -186,7 +186,7 @@ const MyProfile = () => {
                             <tr>
                                 <td>Facebook</td>
                                 <td>
-                                    <input type="text" placeholder="Facebook Profile Link" class="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("facebook")} />
+                                    <input type="text" placeholder="Facebook Profile Link" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" {...register("facebook")} />
                                 </td>
                             </tr>
                             <tr className='text-center  '>

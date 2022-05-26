@@ -108,7 +108,7 @@ const Register = () => {
                                             <div className="form-control">
                                                 <label className="label cursor-pointer">
                                                     <span className="label-text text-lg">&nbsp; Show Password &nbsp;</span>
-                                                    <input onClick={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
+                                                    <input onChange={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
                                                 </label>
                                             </div>
                                         </div>

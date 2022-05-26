@@ -29,12 +29,17 @@ const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [token] = useToken(user || gUser)
+
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
         }
     }, [token, navigate, from])
 
+    if (globalUser) {
+        console.log(globalUser);
+
+    }
 
     if (loading || gLoading) {
         return <Loading></Loading>
@@ -78,7 +83,7 @@ const Login = () => {
                                     <div className='text-xl flex justify-end items-center'>
                                         <label className="label cursor-pointer">
                                             <span className="label-text text-lg">&nbsp; Show Password &nbsp;</span>
-                                            <input onClick={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
+                                            <input onChange={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
                                         </label>
                                     </div>
 

@@ -41,7 +41,7 @@ const useToken = variableUser => {
                     localStorage.setItem(`accessToken`, data.accessToken);
                 })
         }
-    }, [user, dependentName])
+    }, [dependentName])
     return [token]
 
 

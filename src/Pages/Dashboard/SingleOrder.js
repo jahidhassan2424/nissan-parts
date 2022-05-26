@@ -29,7 +29,7 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
                 ?
                 <div>
                     <button disabled className='btn btn-primary font-bold text-white'>PAID </button><br />
-                    <div class="tooltip tooltip-primary tooltip-right" data-tip="Transaction ID">
+                    <div className="tooltip tooltip-primary tooltip-right" data-tip="Transaction ID">
                         <button className='text-green-500  font-bold'>
                             {transactionID || 'Not Found'}</button>
                     </div>
@@ -40,7 +40,7 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
 
             <td>{isPaid
                 ?
-                <div class="tooltip tooltip-primary tooltip-left" data-tip="Paid Orders Cannot be canceled">
+                <div className="tooltip tooltip-primary tooltip-left" data-tip="Paid Orders Cannot be canceled">
                     <button disabled className='btn btn-error font-bold text-white'>CANCEL </button>
                 </div>
                 :

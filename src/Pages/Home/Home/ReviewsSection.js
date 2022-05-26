@@ -20,8 +20,8 @@ const ReviewsSection = () => {
     return (
         <div className='mt-20 max-h-[1000px] overflow-auto'>
             <h1 className='text-4xl font-bold text-center mb-5'>Our Reviews</h1>
-            <div class="overflow-x-auto w-full">
-                <table class="table w-full">
+            <div className="overflow-x-auto w-full">
+                <table className="table w-full">
                     <thead>
                         <tr className='child:text-lg'>
                             <th>No.</th>
