@@ -7,12 +7,6 @@ const ContactUs = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
 
-        // const response = await axios.post(`http://localhost:3001/contactUs`, data)
-        // console.log(response);
-        // toast.success("Email Sent Successfully!")
-
-
-
         try {
             const response = await axios.post(`http://localhost:3001/contactUs`, data)
             if (response.data.insertedId) {
