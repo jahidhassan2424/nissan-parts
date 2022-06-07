@@ -10,8 +10,8 @@ const Portfolio = () => {
                     <h2 className='text-3xl text-center font-bold'>I'm <b>Jahid Hassan</b>, a multidisciplinary developer and designer who focuses on telling my clients' stories visually, through enjoyable and meaningful experiences. I specialize in responsive react js SPA and unique user interfaces.</h2>
                 </div>
                 <p className='text-center text-3xl my-10 text-primary'>My skills as a web developer</p>
-                <div class="flex justify-center">
-                    <table class="table w-1/2">
+                <div className="flex justify-center">
+                    <table className="table w-1/2">
                         <thead>
                             <tr>
                                 <th>FrontEnd</th>
@@ -57,30 +57,30 @@ const Portfolio = () => {
 
                         {/* greensports */}
                         {/* https://green-sports-18e07.web.app/ */}
-                        <div class="card w-96 bg-base-100 shadow-xl">
-                            <div class="card-body">
-                                <h2 class="card-title text-3xl font-bold">Medi Care</h2>
+                        <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <h2 className="card-title text-3xl font-bold">Medi Care</h2>
                                 <p className='font-bold'>Medicare is a webstite for hospial authority to manage their tasks</p>
-                                <div class="card-actions justify-end">
-                                    <a href="https://dental-care-2e777.web.app/" target={"_blank"}><button class="btn btn-primary">Live site</button></a>
+                                <div className="card-actions justify-end">
+                                    <a href="https://dental-care-2e777.web.app/" target={"_blank"}><button className="btn btn-primary">Live site</button></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card w-96 bg-base-100 shadow-xl">
-                            <div class="card-body">
-                                <h2 class="card-title text-3xl font-bold">Green Sports</h2>
+                        <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <h2 className="card-title text-3xl font-bold">Green Sports</h2>
                                 <p className='font-bold'>Green Sports is a website to find to buy differnet types of sports equipments  </p>
-                                <div class="card-actions justify-end">
-                                    <a href="https://green-sports-18e07.web.app/" target={"_blank"}><button class="btn btn-primary">Live site</button></a>
+                                <div className="card-actions justify-end">
+                                    <a href="https://green-sports-18e07.web.app/" target={"_blank"}><button className="btn btn-primary">Live site</button></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card w-96 bg-base-100 shadow-xl">
-                            <div class="card-body">
-                                <h2 class="card-title text-3xl font-bold">Key Chrone Review</h2>
+                        <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <h2 className="card-title text-3xl font-bold">Key Chrone Review</h2>
                                 <p className='font-bold'>Keychrone is a keyboard review website</p>
-                                <div class="card-actions justify-end">
-                                    <a href="https://keychrone.netlify.app/" target={"_blank"}><button class="btn btn-primary">Live site</button></a>
+                                <div className="card-actions justify-end">
+                                    <a href="https://keychrone.netlify.app/" target={"_blank"}><button className="btn btn-primary">Live site</button></a>
                                 </div>
                             </div>
                         </div>

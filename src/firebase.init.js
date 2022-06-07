@@ -6,6 +6,14 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//     apiKey: " AIzaSyDfUmiXqYlXaklfgujigKc_9fQOY62h9Kc",
+//     authDomain: " nissan-parts.firebaseapp.com",
+//     projectId: " nissan-parts",
+//     storageBucket: " nissan-parts.appspot.com",
+//     messagingSenderId: " 713230611424",
+//     appId: " 1:713230611424:web:6f02c0d2cb559d795fb185",
+// };
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
     authDomain: process.env.REACT_APP_authDomain,

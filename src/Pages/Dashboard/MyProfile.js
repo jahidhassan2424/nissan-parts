@@ -14,7 +14,7 @@ const MyProfile = () => {
     const [editForm, setEditForm] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
     const [processing, setProcessing] = useState(false);
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://evening-woodland-82887.herokuapp.com/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`http://localhost:3001/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -31,7 +31,7 @@ const MyProfile = () => {
 
     const onEditedProfileDataSubmit = data => {
         setProcessing(true);
-        fetch(`https://evening-woodland-82887.herokuapp.com/updateUser/${user.email}`, {
+        fetch(`http://localhost:3001/updateUser/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -7,7 +7,7 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
 
     //Change Shipment status
     const handleShip = (_id) => {
-        fetch(`https://evening-woodland-82887.herokuapp.com/order/${_id}`, {
+        fetch(`http://localhost:3001/order/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -35,23 +35,23 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
             <td>{amount}</td>
             <td>{isPaid
                 ?
-                <div class="tooltip tooltip-neutral " data-tip={isShipped ? "Order Shipped" : "Payment is completed for this order"}>
-                    <button class="btn btn-primary text-white">{isShipped ? "Shipped" : "Pending"}</button>
+                <div className="tooltip tooltip-neutral " data-tip={isShipped ? "Order Shipped" : "Payment is completed for this order"}>
+                    <button className="btn btn-primary text-white">{isShipped ? "Shipped" : "Pending"}</button>
                 </div>
                 :
-                <div class="tooltip tooltip-neutral" data-tip="Not Paid yet">
-                    <button class="btn btn-primary text-white">Not Paid</button>
+                <div className="tooltip tooltip-neutral" data-tip="Not Paid yet">
+                    <button className="btn btn-primary text-white">Not Paid</button>
                 </div>
             }</td>
 
             <td>{isPaid
                 ?
-                <div class="tooltip tooltip-neutral" data-tip={isShipped ? "Order Shipped" : "Click to ship"}>
-                    <button disabled={isShipped} onClick={() => handleShip(_id)} class="btn btn-primary text-white">{isShipped ? "Ship" : "Ship Now"}</button>
+                <div className="tooltip tooltip-neutral" data-tip={isShipped ? "Order Shipped" : "Click to ship"}>
+                    <button disabled={isShipped} onClick={() => handleShip(_id)} className="btn btn-primary text-white">{isShipped ? "Ship" : "Ship Now"}</button>
                 </div>
                 :
-                <div class="tooltip tooltip-neutral" data-tip="Cancel Order">
-                    <label for="confirmationModal" onClick={() => setConfirmModal(_id)} class="btn bg-red-500 border-0 hover:bg-red-700 text-white">Cancel</label>
+                <div className="tooltip tooltip-neutral" data-tip="Cancel Order">
+                    <label for="confirmationModal" onClick={() => setConfirmModal(_id)} className="btn bg-red-500 border-0 hover:bg-red-700 text-white">Cancel</label>
                 </div>
             }</td>
         </tr >

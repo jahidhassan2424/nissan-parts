@@ -9,7 +9,7 @@ const SendEmail = ({ user, subject, text }) => {
         text: { text },
     }
 
-    fetch(`https://evening-woodland-82887.herokuapp.com/email`, {
+    fetch(`http://localhost:3001/email`, {
         method: 'POST',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,

@@ -7,7 +7,7 @@ const SingleUser = ({ user, index, refetch }) => {
     const { email, role } = user;
 
 
-    // fetch(`https://evening-woodland-82887.herokuapp.com/users`, {
+    // fetch(`http://localhost:3001/users`, {
     //     method: 'delete'
     // })
     //     .then(res => res.json())
@@ -15,7 +15,7 @@ const SingleUser = ({ user, index, refetch }) => {
 
     //Make an admin
     const handleMakeAdmin = (email) => {
-        fetch(`https://evening-woodland-82887.herokuapp.com/makeAdmin/${email}`, {
+        fetch(`http://localhost:3001/makeAdmin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -34,7 +34,7 @@ const SingleUser = ({ user, index, refetch }) => {
     }
     //Remove an admin
     const handleRemoveAdmin = (email) => {
-        fetch(`https://evening-woodland-82887.herokuapp.com/removeAdmin/${email}`, {
+        fetch(`http://localhost:3001/removeAdmin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

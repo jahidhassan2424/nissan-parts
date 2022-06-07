@@ -18,7 +18,7 @@ const MyReview = () => {
     //User info to show the updated name of user
     const [userInfo, setUserInfo] = useState([]);
 
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://evening-woodland-82887.herokuapp.com/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`http://localhost:3001/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -37,7 +37,7 @@ const MyReview = () => {
             description: data.description,
             date: formatedDate,
         }
-        fetch(`https://evening-woodland-82887.herokuapp.com/reviews/${user.email}`, {
+        fetch(`http://localhost:3001/reviews/${user.email}`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',

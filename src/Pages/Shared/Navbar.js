@@ -15,6 +15,7 @@ const Navbar = () => {
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/home">Home</NavLink></li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/allProducts">Products</NavLink></li>
         <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/portfolio">Portfolio</NavLink></li>
+        <li className='hover:bg-primary  hover:rounded-lg '><NavLink to="/contact">Contact Us</NavLink></li>
         {
             user
                 ?

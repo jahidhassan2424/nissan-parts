@@ -6,7 +6,7 @@ import ManageSingleProducts from './ManageSingleProducts';
 const ManageProducts = () => {
     // Order Data
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`https://evening-woodland-82887.herokuapp.com/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:3001/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);
@@ -17,8 +17,8 @@ const ManageProducts = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th>No</th>

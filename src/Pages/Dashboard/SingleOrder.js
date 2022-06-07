@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import ConfirmationModal from '../Shared/ConfirmationModal';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 
 const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmModal }) => {

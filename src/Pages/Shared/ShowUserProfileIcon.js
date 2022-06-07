@@ -10,7 +10,7 @@ const ShowUserProfileIcon = () => {
     const [user, isLoading] = useAuthState(auth);
     const [userInfo, setUserInfo] = useState([]);
 
-    // const { refetch, isLoading: userInfoLoading } = useQuery('userInfo', () => fetch(`https://evening-woodland-82887.herokuapp.com/users/${user?.email || ''}`, {
+    // const { refetch, isLoading: userInfoLoading } = useQuery('userInfo', () => fetch(`http://localhost:3001/users/${user?.email || ''}`, {
     //     headers: {
     //         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
     //     },

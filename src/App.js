@@ -26,6 +26,7 @@ import NotFound from './Pages/Shared/NotFound';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Portfolio from './Pages/Portfolio';
+import ContactUs from './Pages/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='/register' element={<Register />} ></Route>
         <Route path='/allProducts' element={<OurProducts />} ></Route>
         <Route path='/portfolio' element={<Portfolio />} ></Route>
+        <Route path='/contact' element={<ContactUs />} ></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase /></RequireAuth>} ></Route>
         <Route path='/dashboard' element={
@@ -60,7 +62,9 @@ function App() {
         <Route path='*' element={<NotFound />} ></Route>
       </Routes>
       <Footer />
-      <ToastContainer />
+      <ToastContainer
+        autoClose={1500}
+      />
     </div>
   )
 }

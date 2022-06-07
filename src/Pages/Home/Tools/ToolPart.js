@@ -6,7 +6,7 @@ import SingleTools from './SingleTools';
 
 const ToolPart = () => {
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`https://evening-woodland-82887.herokuapp.com/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:3001/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);

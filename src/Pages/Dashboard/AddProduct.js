@@ -6,7 +6,7 @@ const AddProduct = () => {
 
     const onSubmit = orderInfo => {
         console.log(orderInfo)
-        fetch(`https://evening-woodland-82887.herokuapp.com/products`, {
+        fetch(`http://localhost:3001/products`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -45,7 +45,7 @@ const AddProduct = () => {
                             <tr>
                                 <td>Category</td>
                                 <td>
-                                    <select class="select border border-black w-full max-w-xs"{...register("category")} >
+                                    <select className="select border border-black w-full max-w-xs"{...register("category")} >
                                         <option selected>Steering Wheel</option>
                                         <option>Wheels</option>
                                         <option>Bumper</option>
@@ -75,7 +75,7 @@ const AddProduct = () => {
 
                             {/* image  */}
                             <tr>
-                                <div class="tooltip tooltip-neutral" data-tip="Upload img to any site and paste the link here">
+                                <div className="tooltip tooltip-neutral" data-tip="Upload img to any site and paste the link here">
                                     <td>Image</td>
                                 </div>
 
