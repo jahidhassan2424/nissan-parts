@@ -19,6 +19,7 @@ const Navbar = () => {
     const [user, isLoading] = useAuthState(auth);
     const [admin] = useAdmin(user);
 
+    //Test comment
     useEffect(() => {
         if ((url !== "https://nissan-parts.web.app/") && (url !== "https://nissan-parts.web.app/home")) {
             setNavBg("bg-black");
