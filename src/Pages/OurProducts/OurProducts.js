@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import SingleTools from '../Home/Tools/SingleTools';
 import Loading from '../Shared/Loading';
+import Navbar from './../Shared/Navbar/Navbar';
 
 const OurProducts = () => {
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:3001/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`https://agile-oasis-28074.herokuapp.com/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);
@@ -15,17 +16,21 @@ const OurProducts = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='containerManual'>
-            <h1 className='text-4xl font-bold text-center my-20'>All Products We Make</h1>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 justify-items-center for-testing items-center'>
-                {
-                    products.map(product => <SingleTools
-                        key={product._id}
-                        product={product}
-                        refetch={refetch}
-                        isLoading={isLoading}
-                    ></SingleTools>)
-                }
+        <div >
+            <Navbar />
+
+            <div className='md:mx-[15%] '>
+                <h1 className='text-4xl font-bold text-center my-20'>All Products We Make</h1>
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-x-32 gap-y-20 justify-items-center for-testing items-center'>
+                    {
+                        products.map(product => <SingleTools
+                            key={product._id}
+                            product={product}
+                            refetch={refetch}
+                            isLoading={isLoading}
+                        ></SingleTools>)
+                    }
+                </div>
             </div>
         </div>
     );

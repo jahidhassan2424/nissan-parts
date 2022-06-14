@@ -17,7 +17,7 @@ const ManageOrders = () => {
     const [confirmModal, setConfirmModal] = useState('');
     const [clickedItem, setClickedItem] = useState([]);
 
-    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:3001/orders`, {
+    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`https://agile-oasis-28074.herokuapp.com/orders`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -28,7 +28,7 @@ const ManageOrders = () => {
         })
     )
     useEffect(async () => {
-        fetch(`http://localhost:3001/singleOrder/${confirmModal}`, {
+        fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${confirmModal}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -46,7 +46,7 @@ const ManageOrders = () => {
     }
 
     return (
-        <div className='mt-20'>
+        <div className='mx-[8%] mt-20'>
             {
                 admin
                     ?

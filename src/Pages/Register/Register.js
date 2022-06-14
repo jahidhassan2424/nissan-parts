@@ -127,7 +127,14 @@ const Register = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-primary font-bold text-lg text-white uppercase">Register</button>
+                                    {
+                                        loading
+                                            ?
+                                            <button className="btn btn-primary font-bold text-lg text-white loading uppercase">Register</button>
+                                            :
+                                            <button className="btn btn-primary font-bold text-lg text-white uppercase">Register</button>
+
+                                    }
                                 </div>
                                 <div className="flex flex-col w-full border-opacity-50">
                                     <div className="divider">OR</div>

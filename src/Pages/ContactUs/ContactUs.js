@@ -2,13 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-
+import Navbar from '../Shared/Navbar/Navbar';
 const ContactUs = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-
+        // https://agile-oasis-28074.herokuapp.com
+        // http://localhost:3001
         try {
-            const response = await axios.post(`http://localhost:3001/contactUs`, data)
+            const response = await axios.post(`https://agile-oasis-28074.herokuapp.com/contactUs`, data)
             if (response.data.insertedId) {
                 toast.success('Email Sent Successfully!!')
             }
@@ -16,14 +17,16 @@ const ContactUs = () => {
         } catch (error) {
             if (error.message === 'Request failed with status code 429') {
                 toast.error(error.response.data.errorMessage)
+                console.log(error.response.data);
             }
             console.log(error);
-            console.log(error.response.data.errorMessage);
+            console.log(error?.response?.data?.errorMessage);
         }
 
     };
     return (
         <div>
+            <Navbar />
             <h1 className='text-5xl my-20 font-bold text-center'>Contact Us</h1>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
                 <div className="p-6 border border-gray-300 sm:rounded-md">

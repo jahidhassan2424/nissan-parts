@@ -17,30 +17,32 @@ const SingleTools = ({ isLoading, product, refetch }) => {
     }
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[800px]">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[800px] bg-secondary">
                 <figure><img src={img} alt={`An image of ${name}`} /></figure>
-                <div className="card-body text-center">
-                    <h2 className="card-title text-2xl uppercase">{name}</h2>
-                    <p className=" text-2xl font-semibold ">Unit Price: <b>$ {price}</b></p>
-                    <p className=" text-lg font-semibold">Minimum Order: <b>{minOrder}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Sold: <b>{itemSold}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Available: <b>{availableQty}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Category: <b className='uppercase'>{category}</b> </p>
-                    <p className=" text-lg font-semibold">Brand: <b className='uppercase'>{brand}</b> </p>
-                    <p><span className='text-lg font-semibold'>Rating: </span>
-                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
-                        <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
+                <div className='text-center'>
+                    <h2 className=" text-2xl my-10 font-semibold uppercase">{name}</h2>
+                </div>
+                <div className="card-body text-left">
+                    <p className=" text-2xl  ">Unit Price:$ {price}</p>
+                    <p className=" text-lg ">Minimum Order:{minOrder} pcs</p>
+                    <p className=" text-lg ">Sold:{itemSold} pcs</p>
+                    <p className=" text-lg ">Available:{availableQty} pcs</p >
+                    <p className=" text-lg ">Category: <span className='uppercase'>{category}</span> </p>
+                    <p className=" text-lg ">Brand: <span className='uppercase'>{brand}</span> </p>
+                    <p><span className='text-lg '>Rating: </span>
+                        <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
+                        <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                     </p>
                     <p className='text-lg '>{description}</p>
                     <div className="card-actions justify-center">
                         <button onClick={() => handleNavigateToPurchase(_id)} className="btn btn-primary uppercase text-white font-bold text-xl">Order Now</button>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
     );
 };
 

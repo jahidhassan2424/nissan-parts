@@ -11,7 +11,7 @@ const MyOrders = () => {
     const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
-        fetch(`http://localhost:3001/myOrders?email=${user.email}`, {
+        fetch(`https://agile-oasis-28074.herokuapp.com/myOrders?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const MyOrders = () => {
     })
     useEffect(() => {
         {
-            confirmModal && fetch(`http://localhost:3001/singleOrder/${confirmModal}`, {
+            confirmModal && fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${confirmModal}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -36,8 +36,8 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <h1 className='text-5xl my-5 font-bold mt-20 text-center'>Your Orders</h1>
-            <div className="overflow-x-auto">
+            <h1 className='text-5xl my-5 font-bold mt-20  text-center'>Your Orders</h1>
+            <div className="overflow-x-auto md:mx-[5%]">
                 <table className="table w-full text-lg">
                     <thead >
                         <tr className='child:text-md'>

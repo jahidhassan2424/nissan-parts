@@ -1,0 +1,19 @@
+/*  */
+
+@keyframes moveInLeft {
+    0% {
+        background-color: blue;
+    }
+
+    80% {
+        background-color: blue;
+
+    }
+
+    100% {
+        background-color: blue;
+
+
+    }
+
+}

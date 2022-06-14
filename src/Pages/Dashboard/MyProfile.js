@@ -14,7 +14,7 @@ const MyProfile = () => {
     const [editForm, setEditForm] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
     const [processing, setProcessing] = useState(false);
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`http://localhost:3001/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://agile-oasis-28074.herokuapp.com/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -31,7 +31,7 @@ const MyProfile = () => {
 
     const onEditedProfileDataSubmit = data => {
         setProcessing(true);
-        fetch(`http://localhost:3001/updateUser/${user.email}`, {
+        fetch(`https://agile-oasis-28074.herokuapp.com/updateUser/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -58,8 +58,8 @@ const MyProfile = () => {
 
     return (
         <div>
-            <h2 className='text-5xl font-bold mt-20 text-center'>Your Profile</h2>
-            <div className="avatar mt-5 flex justify-center flex-col items-center gap-10">
+            {/* <h2 className='text-5xl font-bold mt-20 text-center'>Your Profile</h2> */}
+            <div className="avatar mt-20 flex justify-center flex-col items-center gap-10">
                 <div className="w-1/2 lg:w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
@@ -78,58 +78,59 @@ const MyProfile = () => {
 
                 {/* Edit Form Deactivated */}
                 {
-                    !editForm && <div className='flex justify-center mt-10'>
-                        <table className='child:text-2xl w-full lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
+                    !editForm &&
+                    <div className='flex justify-center mt-10'>
+                        <table className='child:text-xl w-full lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className=''>
-                                <td className='pr-2'>Name</td>
+                                <td className='pr-2'>Name :</td>
                                 <td>
-                                    <input disabled value={userInfo.displayName || "Not set yet"} type="text" placeholder="Name" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.displayName || "Not set yet"} type="text" placeholder="Name" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
                             {/* Email */}
                             <tr>
-                                <td>Email</td>
+                                <td>Email :</td>
                                 <td>
-                                    <input disabled value={userInfo.email || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.email || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
                             {/* Address  */}
                             <tr>
-                                <td>Address</td>
+                                <td>Address :</td>
                                 <td>
-                                    <input disabled value={userInfo.address || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.address || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>                            </tr>
                             {/* Phone  */}
                             <tr>
-                                <td>Phone</td>
+                                <td>Phone :</td>
                                 <td>
-                                    <input disabled value={userInfo.phone || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.phone || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
                             {/* Education Institution  */}
                             <tr>
-                                <td>Education Institute</td>
+                                <td>Education Institute :</td>
                                 <td>
-                                    <input disabled value={userInfo.institute || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.institute || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
                             {/* LinkedIn Profile  */}
                             <tr>
-                                <td>LinkedIn Profile</td>
+                                <td>LinkedIn Profile :</td>
                                 <td>
-                                    <input disabled value={userInfo.linkedIn || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.linkedIn || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
                             {/* Facebook  */}
                             <tr>
-                                <td>Facebook</td>
+                                <td>Facebook :</td>
                                 <td>
-                                    <input disabled value={userInfo.facebook || "Not set yet"} type="text" placeholder="Email" className="border border-black p-2 rounded-xl input-bordered w-full max-w-xl" />
+                                    <input disabled value={userInfo.facebook || "Not set yet"} type="text" placeholder="Email" className=" p-2 rounded-xl  w-full " />
                                 </td>
                             </tr>
 
@@ -140,11 +141,11 @@ const MyProfile = () => {
                 {/* edit form activated */}
                 {
                     editForm &&
-                    <h1 className='text-xl text-info text-center'>Note: Changing name may take some time to appear.</h1>
+                    <h1 className='text-xl my-5 text-primary text-center'>Note: Changing name may take some time to appear.</h1>
                 }
                 {
                     editForm && <form className='flex justify-center mt-10' onSubmit={handleSubmit(onEditedProfileDataSubmit)}>
-                        <table className='child:text-2xl lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
+                        <table className='child:text-xl lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className='tr'>
                                 <td className='pr-2'>Name</td>
                                 <td>

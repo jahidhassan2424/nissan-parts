@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
 import useToken from './../../hooks/useToken';
+import Navbar from '../Shared/Navbar/Navbar';
 const Login = () => {
     const [globalUser] = useAuthState(auth);
     const [forgetPass, setForgetPass] = useState(false);
@@ -53,6 +54,7 @@ const Login = () => {
 
     return (
         <div>
+            <Navbar />
             <div className=" flex justify-center items-center mt-20">
                 <div className=" w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
@@ -126,7 +128,13 @@ const Login = () => {
                                     }
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button type="submit" className="btn btn-primary font-bold text-lg text-white">Login</button>
+                                    {
+                                        loading
+                                            ?
+                                            <button type="submit" className="btn btn-primary font-bold text-lg loading text-white">Login</button>
+                                            :
+                                            <button type="submit" className="btn btn-primary font-bold text-lg text-white">Login</button>
+                                    }
                                 </div>
 
                                 <div className="flex flex-col w-full border-opacity-50">

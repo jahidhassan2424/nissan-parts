@@ -7,7 +7,7 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
 
     //Change Shipment status
     const handleShip = (_id) => {
-        fetch(`http://localhost:3001/order/${_id}`, {
+        fetch(`https://agile-oasis-28074.herokuapp.com/order/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

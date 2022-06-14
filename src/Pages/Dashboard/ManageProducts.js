@@ -6,7 +6,7 @@ import ManageSingleProducts from './ManageSingleProducts';
 const ManageProducts = () => {
     // Order Data
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:3001/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`https://agile-oasis-28074.herokuapp.com/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);
@@ -16,7 +16,8 @@ const ManageProducts = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
+        <div className='mx-[10%] mt-20 '>
+            <h1 className='text-4xl text-center font-bold mb-5'>Manage all Products</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

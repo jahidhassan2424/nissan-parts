@@ -18,7 +18,7 @@ const MyReview = () => {
     //User info to show the updated name of user
     const [userInfo, setUserInfo] = useState([]);
 
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`http://localhost:3001/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://agile-oasis-28074.herokuapp.com/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -37,7 +37,7 @@ const MyReview = () => {
             description: data.description,
             date: formatedDate,
         }
-        fetch(`http://localhost:3001/reviews/${user.email}`, {
+        fetch(`https://agile-oasis-28074.herokuapp.com/reviews/${user.email}`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
@@ -64,8 +64,8 @@ const MyReview = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='flex justify-center flex-col items-center w-full '>
-            <h2 className='text-5xl font-bold mt-20'>Add a Review</h2>
+        <div className='flex mt-32 justify-center flex-col items-center w-full '>
+            <h2 className='text-5xl font-bold '>Add a Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full ">
                     <label className="label">

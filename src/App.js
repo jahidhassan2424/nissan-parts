@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home/Home/Home';
 import Footer from './Pages/Shared/Footer';
-import Navbar from './Pages/Shared/Navbar';
 import Loading from './Pages/Shared/Loading';
 import Purchase from './Pages/Purchase/Purchase';
 import Login from './Pages/Login/Login';
@@ -23,7 +22,7 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import Checkouot from './Pages/CheckOut/CheckOut';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
 import NotFound from './Pages/Shared/NotFound';
-import AddProduct from './Pages/Dashboard/AddProduct';
+import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Portfolio from './Pages/Portfolio';
 import ContactUs from './Pages/ContactUs/ContactUs';
@@ -31,8 +30,7 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 function App() {
   return (
     <div>
-      <ShowUserProfileIcon></ShowUserProfileIcon>
-      <Navbar />
+
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
@@ -54,6 +52,7 @@ function App() {
           <Route path="/dashboard/manage-orders" element={<ManageOrders />} ></Route>
           <Route path="/dashboard/manage-users" element={<ManageUsers />} ></Route>
           <Route path="/dashboard/manage-products" element={<ManageProducts />} ></Route>
+          <Route path="/dashboard/add-product" element={<AddProduct />} ></Route>
         </Route>
         <Route path='/checkout/:orderId' element={
           <RequireAuth><Checkouot /></RequireAuth>

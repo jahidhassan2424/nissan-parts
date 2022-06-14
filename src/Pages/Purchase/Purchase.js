@@ -9,7 +9,7 @@ import ProductDetails from './ProductDetails';
 const Purchase = () => {
     const { id } = useParams();
     const [product, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`http://localhost:3001/product/${id}`, {
+    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`https://agile-oasis-28074.herokuapp.com/product/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

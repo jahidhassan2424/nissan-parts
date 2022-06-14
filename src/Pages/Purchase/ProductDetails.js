@@ -46,7 +46,7 @@ const ProductDetails = ({ product }) => {
 
 
             // Sending Data to database
-            const url = `http://localhost:3001/orders`;
+            const url = `https://agile-oasis-28074.herokuapp.com/orders`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -85,7 +85,7 @@ const ProductDetails = ({ product }) => {
                             `,
                         }
 
-                        fetch(`http://localhost:3001/email`, {
+                        fetch(`https://agile-oasis-28074.herokuapp.com/email`, {
                             method: 'POST',
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

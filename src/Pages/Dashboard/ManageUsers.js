@@ -12,7 +12,7 @@ const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
-    const { isLoading, refetch } = useQuery('users', () => fetch(`http://localhost:3001/users`, {
+    const { isLoading, refetch } = useQuery('users', () => fetch(`https://agile-oasis-28074.herokuapp.com/users`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -24,12 +24,12 @@ const ManageUsers = () => {
         return <Loading />
     }
     return (
-        <div className='mt-20'>
+        <div className=' md:mx-[10%] mt-20'>
             {
                 admin
                     ?
                     <div>
-                        <h1 className='text-4xl mb-5 font-bold text-center'>Manage all Users</h1>
+                        <h1 className='text-4xl mb-5 font-bold text-center '>Manage all Users</h1>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>

@@ -17,7 +17,7 @@ const CheckOut = () => {
     const [orderDetails, setOrderDetails] = useState([]);
 
     // Order Data
-    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`http://localhost:3001/singleOrder/${orderId}`, {
+    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${orderId}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
