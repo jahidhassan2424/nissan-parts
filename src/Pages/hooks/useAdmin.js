@@ -4,11 +4,13 @@ const useAdmin = user => {
     const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        const email = user.email;
+        const email = user?.email;
+        console.log('Use Admin Email', email);
         if (email) {
-            fetch(`https://agile-oasis-28074.herokuapp.com/admin/${user?.email}`, {
+            // https://agile-oasis-28074.herokuapp.com/
+            fetch(`https://agile-oasis-28074.herokuapp.com/admin/${user.email}`, {
                 headers: {
-                    'content-type': 'application.json',
+                    'content-type': 'application/json',
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 },
             })

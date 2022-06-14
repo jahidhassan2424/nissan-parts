@@ -43,6 +43,7 @@ const Navbar = () => {
     const [userInfo, setUserInfo] = useState([]);
     const handleSIgnOut = () => {
         localStorage.removeItem(`accessToken`);
+        localStorage.removeItem(`accessToken`);
         signOut(auth);
     }
     const navItems = <>

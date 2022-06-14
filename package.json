@@ -2,6 +2,7 @@
   "name": "third-app",
   "version": "0.1.0",
   "private": true,
+
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -32,32 +33,38 @@
     "stripe": "^9.4.0",
     "web-vitals": "^2.1.4"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "react-scripts build && firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "push": "git add . && node gitPush.js && git push"
+    "push": "git add . && node gitPush.js && git push",
+    "git-deploy": "git add . && node gitPush.js && git push && react-scripts build && firebase deploy"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
+
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
   },
+  
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",

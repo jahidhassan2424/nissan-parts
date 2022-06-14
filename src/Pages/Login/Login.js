@@ -38,7 +38,6 @@ const Login = () => {
     }, [token, navigate, from])
 
     if (globalUser) {
-        console.log(globalUser);
 
     }
 
