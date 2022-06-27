@@ -6,7 +6,7 @@ const Footer = () => {
     return (
 
         <footer className="md:mx-[15%] h-fit mt-[10%] text-center lg:text-left bg-gray-100 text-gray-600">
-            <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
+            <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300 ">
                 <div className="mr-12 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
                 </div>
@@ -64,7 +64,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mx-6 py-10 text-center md:text-left h-fit">
-                <div className="grid  md:grid-cols-[6fr,6fr]  gap-8">
+                <div className="grid  md:grid-cols-[6fr,6fr] grid-cols-1 gap-8">
                     <div>
                         <h6 className="
                                 uppercase
@@ -83,9 +83,9 @@ const Footer = () => {
                             Here you can find all car parts you ever need. We made only high quality original car parts.
                         </p>
                     </div>
-                    <div className='flex flex-row gap-20'>
+                    <div className='grid md:grid-cols-3 xs:gap-20'>
                         <div className="">
-                            <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                            <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start ">
                                 Products
                             </h6>
                             <p className="mb-4">

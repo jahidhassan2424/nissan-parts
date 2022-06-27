@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div>
-            <div className=" ">
-                <div className="banner-content flex justify-center items-center h-[70vh] ">
+            <div >
+                <div className="banner-content flex justify-center items-center md:h-[70vh] h-fit ">
                     <div className=' text-center'>
 
-                        <p >
-                            <span className=" title-text text-3xl lg:text-6xl font-bold uppercase ">Welcome to Nissan Spare Parts!</span>
+                        <p className='xs:mb-20'>
+                            <span className="xs:text-black hero-section-text xs:text-5xl  title-text text-3xl lg:text-6xl font-bold uppercase ">Welcome to Nissan Spare Parts!</span>
                             <br />
 
 

@@ -7,6 +7,7 @@
 .home-hero{
     background-image: url("https://i.ibb.co/Z2HXf3V/rsz-lukasz-niescioruk-d4cip1bqe3i-unsplash-1.jpg");
     background-repeat: no-repeat;
+    background-size: 100%;
     
 }
 .hero-child{
@@ -29,4 +30,28 @@
         line-height: 150px;
     }
     
+}
+@media screen and (max-width:576px) {
+    .banner-content{
+        span{
+            line-height:20px;
+        }
+        .title-text{
+            line-height: 50px;
+        }
+
+    }
+    .hero-child{
+        box-shadow:none;
+    }
+    .home-hero{
+        background-image: none;
+    }
+    // .menu li{
+    //     color:black;
+        
+    // }
+    .hero-section-text{
+        line-height: 700px;
+    }
 }

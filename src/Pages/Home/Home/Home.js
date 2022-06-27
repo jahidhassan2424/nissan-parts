@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <div className='h-fit '>
             <div className='home-hero'>
-                <div className='hero-child h-[100vh]'>
+                <div className='hero-child md:h-[100vh] h-[50vh]'>
                     <Navbar />
                     <Banner />
                 </div>

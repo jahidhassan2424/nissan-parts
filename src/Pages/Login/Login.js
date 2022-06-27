@@ -13,6 +13,7 @@ const Login = () => {
     const [passwordError, setPasswordError] = useState('');
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
+
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -50,7 +51,6 @@ const Login = () => {
         const password = data.password;
         signInWithEmailAndPassword(email, password);
     };
-
     return (
         <div>
             <Navbar />
@@ -64,7 +64,6 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Email</span>
                                     </label>
-
                                     <input type="email" placeholder="Email" name='email' className="input input-bordered text-xl" {...register("email",
                                         { required: true })} />
                                     <label className="label">

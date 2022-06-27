@@ -38,8 +38,6 @@ const Navbar = () => {
         }
     }, [url])
 
-
-
     const [userInfo, setUserInfo] = useState([]);
     const handleSIgnOut = () => {
         localStorage.removeItem(`accessToken`);
@@ -47,16 +45,16 @@ const Navbar = () => {
         signOut(auth);
     }
     const navItems = <>
-        <li ><NavLink to="/home" className={`${navText} text-md mx-2 hover:bg-primary`}>Home</NavLink></li>
-        <li ><NavLink to="/allProducts" className={`${navText}  text-md mx-1 hover:bg-primary`}>Products</NavLink></li>
-        <li className=' '><NavLink to="/contact" className={`${navText}  text-md mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
+        <li ><NavLink to="/home" className={`md:${navText} text-black text-md mx-2 hover:bg-primary`}>Home</NavLink></li>
+        <li ><NavLink to="/allProducts" className={`md:${navText} text-black  text-md mx-1 hover:bg-primary`}>Products</NavLink></li>
+        <li className=' '><NavLink to="/contact" className={`md:${navText} text-black text-md mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
         {
             user
                 ?
                 <div className='flex flex-row items-center gap-5'>
                     <div className='flex flex-row'>
                         <li className=''>
-                            <NavLink to="/dashboard" className={`${navText} hover:bg-primary mx-2`}>Dashboard</NavLink>
+                            <NavLink to="/dashboard" className={`md:${navText} text-black hover:bg-primary mx-2`}>Dashboard</NavLink>
                         </li>
                         <li onClick={handleSIgnOut} className='hover:bg-primary  rounded-lg mx-2'><NavLink to="/login" className={` ${loginBg} ${loginText}`}>Sign Out</NavLink></li>
                     </div>
@@ -118,20 +116,20 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`navbar ${navMargin}  ${navBg} flex justify-between `}>
-            <div className=" ">
-                <div className="dropdown">
+        <div className={`navbar ${navMargin}  ${navBg} flex  justify-between  xs:mb-20`}>
+            <div className="flex justify-between ">
+                <div className="dropdown ">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 xs:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex="0" className={`menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box child:text-lg  child:text-black`}>
                         {navItems}
 
                     </ul>
                 </div>
-                <Link to="/" className={` normal-case text-2xl lg:text-4xl ${navText} `}>NISSAN PARTS</Link>
+                <div><Link to="/" className={` normal-case text-2xl lg:text-4xl ${navText} `}>NISSAN PARTS</Link></div>
             </div>
-            <div className=" hidden lg:flex">
+            <div className=" hidden lg:flex  xs:text">
                 <ul className="menu menu-horizontal p-0 text-xl">
                     {navItems}
 
