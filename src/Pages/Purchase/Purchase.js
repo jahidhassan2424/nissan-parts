@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ProductDetails from './ProductDetails';
 import { SERVER_URL } from '../Shared/variables';
+import Navbar from '../Shared/Navbar/Navbar';
 
 const Purchase = () => {
     const { id } = useParams();
@@ -26,17 +27,21 @@ const Purchase = () => {
     }
 
     return (
-        <div className='containerManual'>
-            <h1 className='text-5xl font-bold text-center mt-20'>Order Details</h1>
-            <div className="hero ">
-                <div>
-                    <ProductDetails
-                        key={product._id}
-                        product={product}
-                    ></ProductDetails>
-                </div>
+        <div>
+            <Navbar />
+            <div className='containerManual'>
 
-            </div >
+                <h1 className='text-3xl font-bold text-center mt-20'>Order Details</h1>
+                <div className="hero ">
+                    <div>
+                        <ProductDetails
+                            key={product._id}
+                            product={product}
+                        ></ProductDetails>
+                    </div>
+
+                </div >
+            </div>
         </div>
     );
 };

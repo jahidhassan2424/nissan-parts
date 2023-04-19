@@ -45,16 +45,16 @@ const Navbar = () => {
         signOut(auth);
     }
     const navItems = <>
-        <li ><NavLink to="/home" className={`md:${navText} text-black text-md mx-2 hover:bg-primary`}>Home</NavLink></li>
-        <li ><NavLink to="/allProducts" className={`md:${navText} text-black  text-md mx-1 hover:bg-primary`}>Products</NavLink></li>
-        <li className=' '><NavLink to="/contact" className={`md:${navText} text-black text-md mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
+        <li ><NavLink to="/home" className={`md:${navText} text-white text-md mx-2 hover:bg-primary`}>Home</NavLink></li>
+        <li ><NavLink to="/allProducts" className={`md:${navText} text-white  text-md mx-1 hover:bg-primary`}>Products</NavLink></li>
+        <li className=' '><NavLink to="/contact" className={`md:${navText} text-white text-md mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
         {
             user
                 ?
                 <div className='flex flex-row items-center gap-5'>
                     <div className='flex flex-row'>
                         <li className=''>
-                            <NavLink to="/dashboard" className={`md:${navText} text-black hover:bg-primary mx-2`}>Dashboard</NavLink>
+                            <NavLink to="/dashboard" className={`md:${navText} text-white hover:bg-primary mx-2`}>Dashboard</NavLink>
                         </li>
                         <li onClick={handleSIgnOut} className='hover:bg-primary  rounded-lg mx-2'><NavLink to="/login" className={` ${loginBg} ${loginText}`}>Sign Out</NavLink></li>
                     </div>

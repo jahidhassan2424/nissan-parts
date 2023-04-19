@@ -59,12 +59,12 @@ const Login = () => {
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="card-body">
-                                <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
+                                <h1 className='text-3xl font-bold text-center mb-10'>Login</h1>
                                 <div className="form-control ">
                                     <label className="label">
-                                        <span className="label-text text-xl">Email</span>
+                                        <span className="label-text text-md">Email</span>
                                     </label>
-                                    <input type="email" placeholder="Email" name='email' className="input input-bordered text-xl" {...register("email",
+                                    <input type="email" placeholder="Email" name='email' className="input input-bordered text-md" {...register("email",
                                         { required: true })} />
                                     <label className="label">
                                         {errors?.email?.type === 'required' && <span className="label-text-alt text-lg">{errors.email.message}</span>}
@@ -73,14 +73,14 @@ const Login = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text text-xl">Password</span>
+                                        <span className="label-text text-md">Password</span>
                                     </label>
 
-                                    <input type={showPassword ? "text" : "password"} placeholder="Password" name='password' className="input input-bordered text-xl" {...register("password",
+                                    <input type={showPassword ? "text" : "password"} placeholder="Password" name='password' className="input input-bordered text-md" {...register("password",
                                         {
                                             required: true,
                                         })} />
-                                    <div className='text-xl flex justify-end items-center'>
+                                    <div className='text-md flex justify-end items-center'>
                                         <label className="label cursor-pointer">
                                             <span className="label-text text-lg">&nbsp; Show Password &nbsp;</span>
                                             <input onChange={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
@@ -92,18 +92,18 @@ const Login = () => {
                                     <div className=''>
 
                                         {
-                                            forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" className="mt-5 input input-bordered text-xl w-full" />
+                                            forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" className="mt-5 input input-bordered text-md w-full" />
                                         }
                                         <br />
                                         <div className='flex flex-row-reverse justify-between'>
                                             <div >
                                                 <label className="my-2">
-                                                    <button onClick={() => setForgetPass(true)} className=" hover:text-accent font-semibold text-xl"><span >Forgot password?</span></button>
+                                                    <button onClick={() => setForgetPass(true)} className=" hover:text-accent font-semibold text-md"><span >Forgot password?</span></button>
                                                 </label>
                                             </div>
                                             <div>
                                                 <label className="">
-                                                    <Link to="/register" className=" pointer hover:text-accent font-semibold text-xl">New here? Sign Up
+                                                    <Link to="/register" className=" pointer hover:text-accent font-semibold text-md">New here? Sign Up
                                                     </Link>
                                                 </label>
                                             </div>

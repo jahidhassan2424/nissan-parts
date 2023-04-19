@@ -7,7 +7,7 @@ import { SERVER_URL } from '../Shared/variables';
 const ContactUs = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-       
+
         try {
             const response = await axios.post(`${SERVER_URL}`, data)
             if (response.data.insertedId) {
@@ -27,7 +27,7 @@ const ContactUs = () => {
     return (
         <div>
             <Navbar />
-            <h1 className='text-5xl my-20 font-bold text-center'>Contact Us</h1>
+            <h1 className='text-3xl my-20 font-bold text-center'>Contact Us</h1>
             <div className="w-full md:w-96 md:max-w-full mx-auto">
                 <div className="p-6 border border-gray-300 sm:rounded-md">
                     <form onSubmit={handleSubmit(onSubmit)}>

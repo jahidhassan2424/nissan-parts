@@ -23,22 +23,22 @@ const SingleTools = ({ isLoading, product, refetch }) => {
                     <h2 className=" text-2xl my-10 font-semibold uppercase">{name}</h2>
                 </div>
                 <div className="card-body text-left">
-                    <p className=" text-2xl  ">Unit Price:$ {price}</p>
-                    <p className=" text-lg ">Minimum Order:{minOrder} pcs</p>
-                    <p className=" text-lg ">Sold:{itemSold} pcs</p>
-                    <p className=" text-lg ">Available:{availableQty} pcs</p >
-                    <p className=" text-lg ">Category: <span className='uppercase'>{category}</span> </p>
-                    <p className=" text-lg ">Brand: <span className='uppercase'>{brand}</span> </p>
-                    <p><span className='text-lg '>Rating: </span>
+                    <p className=" text-lg  ">Unit Price:$ {price}</p>
+                    <p className=" text-sm ">Minimum Order:{minOrder} pcs</p>
+                    <p className=" text-sm ">Sold:{itemSold} pcs</p>
+                    <p className=" text-sm ">Available:{availableQty} pcs</p >
+                    <p className=" text-sm ">Category: <span className='uppercase'>{category}</span> </p>
+                    <p className=" text-sm ">Brand: <span className='uppercase'>{brand}</span> </p>
+                    <p><span className='text-sm '>Rating: </span>
                         <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-orange-500 text-xl' icon={faStar} />
                     </p>
-                    <p className='text-lg '>{description}</p>
+                    <p className='text-sm '>{description}</p>
                     <div className="card-actions justify-center">
-                        <button onClick={() => handleNavigateToPurchase(_id)} className="btn btn-primary uppercase text-white font-bold text-xl">Order Now</button>
+                        <button onClick={() => handleNavigateToPurchase(_id)} className="btn btn-primary uppercase text-white font-bold text-md">Order Now</button>
                     </div>
                 </div >
             </div >

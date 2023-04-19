@@ -21,7 +21,7 @@ const OurProducts = () => {
             <Navbar />
 
             <div className='md:mx-[15%] '>
-                <h1 className='text-4xl font-bold text-center my-20'>All Products We Make</h1>
+                <h1 className='text-3xl font-bold text-center my-20'>All Products We Make</h1>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-x-32 gap-y-20 justify-items-center for-testing items-center'>
                     {
                         products.map(product => <SingleTools

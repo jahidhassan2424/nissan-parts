@@ -11,6 +11,7 @@ import Checkouot from '../CheckOut/CheckOut';
 import CheckOut from '../CheckOut/CheckOut';
 import { format } from 'date-fns';
 import { SERVER_URL } from '../Shared/variables';
+import Navbar from '../Shared/Navbar/Navbar';
 const ProductDetails = ({ product }) => {
     const { _id, name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
@@ -118,60 +119,60 @@ const ProductDetails = ({ product }) => {
                 </div>
                 {/* Element  2*/}
                 <div className='productDetails-body  p-5 rounded-xl'>
-                    <h2 className="card-title text-2xl uppercase">{name}</h2>
-                    <p className=" text-2xl font-semibold ">Unit Price: <b>$ {price}</b></p>
-                    <p className=" text-lg font-semibold">Minimum Order: <b>{minOrder}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Sold: <b>{itemSold}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Available: <b>{availableQty}</b> pcs</p>
-                    <p className=" text-lg font-semibold">Category: <b className='uppercase'>{category}</b> </p>
-                    <p className=" text-lg font-semibold">Brand: <b className='uppercase'>{brand}</b> </p>
-                    <p><span className='text-lg font-semibold'>Rating: </span>
+                    <h2 className="card-title text-xl uppercase">{name}</h2>
+                    <p className=" text-sm  ">Unit Price: $ {price}</p>
+                    <p className=" text-sm ">Minimum Order: {minOrder} pcs</p>
+                    <p className=" text-sm ">Sold: {itemSold} pcs</p>
+                    <p className=" text-sm ">Available: {availableQty} pcs</p>
+                    <p className=" text-sm ">Category: {category} </p>
+                    <p className=" text-sm ">Brand: {brand} </p>
+                    <p><span className='text-sm '>Rating: </span>
                         <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                         <FontAwesomeIcon className='text-accent text-xl' icon={faStar} />
                     </p>
-                    <p className='text-lg '>{description}</p>
+                    <p className='text-sm '>{description}</p>
                 </div>
                 {/* Element  3*/}
                 <div className='flex flex-cols justify-center ' >
-                    <div className=' w-full shadow-xl lg:p-10 p-5 rounded-xl '>
+                    <div className=' w-full shadow-xl sm:p-10 p-5 rounded-xl '>
                         <div className=" ">
                             <form onSubmit={handleQty} >
                                 <h2 className='text-4xl  mb-5 text-center font-bold'>Customer Details</h2>
                                 {/* Name  */}
                                 <label className="label">
-                                    <span className="label-text text-xl">Your Name</span>
+                                    <span className=" label-text text-sm">Your Name</span>
                                 </label>
-                                <input type="text" value={user.displayName} disabled placeholder="Type here" className=" text-xl border-black input w-full max-w-full" />
+                                <input type="text" value={user.displayName} disabled placeholder="Type here" className=" text-sm border-black input w-full max-w-full" />
                                 {/* Email */}
                                 <label className="label">
-                                    <span className="label-text text-xl">Your Email</span>
+                                    <span className=" label-text text-sm">Your Email</span>
                                 </label>
-                                <input type="text" value={user.email} disabled placeholder="Type here" className=" text-xl border-black input w-full max-w-full" />
+                                <input type="text" value={user.email} disabled placeholder="Type here" className=" text-sm border-black input w-full max-w-full" />
                                 {/* Address */}
                                 <label className="label">
-                                    <span className="label-text text-xl">Shipping Address</span>
+                                    <span className=" label-text text-sm">Shipping Address</span>
                                 </label>
-                                <input type="text" placeholder="Type Your Address" className=" text-xl border-black input w-full max-w-full" name='address' />
+                                <input type="text" placeholder="Type Your Address" className=" text-sm border-black input w-full max-w-full" name='address' />
                                 {/* Phone number */}
                                 <label className="label">
-                                    <span className="label-text text-xl">Phone Number</span>
+                                    <span className=" label-text text-sm">Phone Number</span>
                                 </label>
-                                <input type="number" placeholder="You Mobile no." className=" text-xl border-black input w-full max-w-full" name="phone" />
+                                <input type="number" placeholder="You Mobile no." className=" text-sm border-black input w-full max-w-full" name="phone" />
                                 <label className="label">
-                                    <span className="label-text text-xl">Enter Quantity</span>
+                                    <span className=" label-text text-sm">Enter Quantity</span>
                                 </label>
-                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" input w-full border px-5 border-black text-lg" required />
+                                <input type="number" onChange={(e) => setTotalPrice((e.target.value) * price)} placeholder={`Min qty ${minOrder}`} name='qty' className=" input w-full border px-5 border-black text-sm" required />
                                 {
-                                    qtyError && <p className='text-xl mt-2 text-red-500'>{qtyError}</p>
+                                    qtyError && <p className='text-sm mt-2 text-red-500'>{qtyError}</p>
                                 }
 
                                 <div className=" mt-3 w-full">
-                                    <button onClick={() => setPayNow(true)} type='submit' className=" mb-5 w-full  btn btn-primary uppercase text-white font-bold text-xl">Proceed To Checkout</button>
+                                    <button onClick={() => setPayNow(true)} type='submit' className=" mb-5 w-full  btn btn-primary uppercase text-white font-bold text-sm">Proceed To Checkout</button>
 
-                                    <button type="submit" className="w-full  btn btn-neutral uppercase text-white font-bold text-xl">Pay later</button>
+                                    <button type="submit" className="w-full  btn btn-neutral uppercase text-white font-bold text-sm">Pay later</button>
                                 </div>
                             </form>
                             <div className='my-5'>

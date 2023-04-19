@@ -5,8 +5,8 @@ import { faCar } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     return (
 
-        <footer className="md:mx-[15%] h-fit mt-[10%] text-center lg:text-left bg-gray-100 text-gray-600">
-            <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300 ">
+        <footer className=" h-fit mt-[10%] text-center lg:text-left bg-gray-100 text-gray-600">
+            <div className="flex justify-center items-center lg:justify-between p-3 border-b border-gray-300 ">
                 <div className="mr-12 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
                 </div>
@@ -63,7 +63,7 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-            <div className="mx-6 py-10 text-center md:text-left h-fit">
+            <div className="mx-6 py-2 text-center md:text-left h-fit md:[padding:0 15%]">
                 <div className="grid  md:grid-cols-[6fr,6fr] grid-cols-1 gap-8">
                     <div>
                         <h6 className="
@@ -167,7 +167,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="text-center p-6 bg-gray-200">
+            <div className="text-center p-2 bg-gray-200">
                 <span>© 2022 Copyright:</span>
                 <a className="text-gray-600 font-semibold" href="https://tailwind-elements.com/"> NISSAN PARTS</a>
             </div>
