@@ -73,8 +73,14 @@ const MyProfile = () => {
                 <div className='flex justify-around items-center justify-items-center'>
                     <div className="form-control pt-12 ">
                         <label className="cursor-pointer label">
-                            <span className="label-text text-lg">Edit Form</span>
-                            <input onChange={() => setEditForm(!editForm)} type="checkbox" checked={editForm} className="checkbox checkbox-accent" />
+                            {
+                                !editForm
+                                    ?
+                                    <button className={`btn btn-primary`} onClick={() => setEditForm(!editForm)} >Edit Form</button>
+                                    :
+                                    <button className={`btn btn-neutral`} onClick={() => setEditForm(!editForm)} >Cancel </button>
+                            }
+                            {/* <input onChange={() => setEditForm(!editForm)} type="checkbox" checked={editForm} className="checkbox checkbox-accent" /> */}
                         </label>
                     </div>
                 </div>
