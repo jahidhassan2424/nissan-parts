@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import auth from './../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { SERVER_URL } from '../Pages/Shared/variables';
 const useToken = variableUser => {
     const [user] = useAuthState(auth);
     const [token, setToken] = useState('');
@@ -14,7 +15,7 @@ const useToken = variableUser => {
         const currentUser = { name, email }
 
         if (name) {
-            fetch(`https://agile-oasis-28074.herokuapp.com/users/${email}`, {
+            fetch(`${SERVER_URL}/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

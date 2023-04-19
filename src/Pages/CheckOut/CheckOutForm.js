@@ -10,6 +10,7 @@ import userEvent from '@testing-library/user-event';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { SERVER_URL } from '../Shared/variables';
 
 const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
 
@@ -31,7 +32,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
     }
     else if (fetchDone) {
         // useEffect(() => {
-        const url = `https://agile-oasis-28074.herokuapp.com/create-payment-intent`
+        const url = `${SERVER_URL}/create-payment-intent`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -96,7 +97,7 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
             const transactionIdDB = paymentIntent.id;
             setCardError('');
             setPaymentSuccess('Congratulations! You have completed your payment successfully');
-            fetch(`https://agile-oasis-28074.herokuapp.com/peymentStatus/${_id}`, {
+            fetch(`${SERVER_URL}/peymentStatus/${_id}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

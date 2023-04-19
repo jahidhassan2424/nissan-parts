@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SERVER_URL } from "../Shared/variables";
 
 const useAdmin = user => {
     const [admin, setAdmin] = useState(false);
@@ -7,8 +8,8 @@ const useAdmin = user => {
         const email = user?.email;
         console.log('Use Admin Email', email);
         if (email) {
-            // https://agile-oasis-28074.herokuapp.com/
-            fetch(`https://agile-oasis-28074.herokuapp.com/admin/${user.email}`, {
+            // ${SERVER_URL}/
+            fetch(`${SERVER_URL}/admin/${user.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

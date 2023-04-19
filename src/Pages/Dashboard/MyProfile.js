@@ -8,13 +8,14 @@ import './MyProfileOnly.css'
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from './../Shared/Loading';
+import { SERVER_URL } from '../Shared/variables';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const [editForm, setEditForm] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
     const [processing, setProcessing] = useState(false);
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://agile-oasis-28074.herokuapp.com/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`${SERVER_URL}/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -31,7 +32,7 @@ const MyProfile = () => {
 
     const onEditedProfileDataSubmit = data => {
         setProcessing(true);
-        fetch(`https://agile-oasis-28074.herokuapp.com/updateUser/${user.email}`, {
+        fetch(`${SERVER_URL}/updateUser/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

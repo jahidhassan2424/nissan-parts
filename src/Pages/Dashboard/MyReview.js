@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import { SERVER_URL } from '../Shared/variables';
 
 const MyReview = () => {
     const date = new Date();
@@ -18,7 +19,7 @@ const MyReview = () => {
     //User info to show the updated name of user
     const [userInfo, setUserInfo] = useState([]);
 
-    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`https://agile-oasis-28074.herokuapp.com/users/${user.email}`, {
+    const { refetch, isLoading } = useQuery('userInfo', () => fetch(`${SERVER_URL}/users/${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -37,7 +38,7 @@ const MyReview = () => {
             description: data.description,
             date: formatedDate,
         }
-        fetch(`https://agile-oasis-28074.herokuapp.com/reviews/${user.email}`, {
+        fetch(`${SERVER_URL}/reviews/${user.email}`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',

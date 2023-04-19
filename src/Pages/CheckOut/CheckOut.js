@@ -10,6 +10,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import CheckOutForm from './CheckOutForm';
+import { SERVER_URL } from '../Shared/variables';
 const stripePromise = loadStripe('pk_test_51L1ZciEei3cvnsgH18KkXBrVikFBmpmiYfUBWq3HLfMeZf3q4G5h5v7uMFAftFPRu9S0nTcFK2LGlUksioo8y5xj00S78MY6rA');
 
 const CheckOut = () => {
@@ -17,7 +18,7 @@ const CheckOut = () => {
     const [orderDetails, setOrderDetails] = useState([]);
 
     // Order Data
-    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${orderId}`, {
+    const { isLoading, refetch } = useQuery('singleOrder', () => fetch(`${SERVER_URL}/singleOrder/${orderId}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

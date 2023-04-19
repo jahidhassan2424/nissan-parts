@@ -6,7 +6,7 @@ import SingleReview from './SingleReview';
 
 const ReviewsSection = () => {
     const [reviews, setReviews] = useState([]);
-    const { isLoading, refetch } = useQuery('reviews', () => fetch(`https://agile-oasis-28074.herokuapp.com/reviews`, {
+    const { isLoading, refetch } = useQuery('reviews', () => fetch(`${SERVER_URL}/reviews`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

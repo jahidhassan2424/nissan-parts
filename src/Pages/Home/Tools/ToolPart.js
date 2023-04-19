@@ -3,10 +3,11 @@ import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading';
 import Category from './../Category/Category';
 import SingleTools from './SingleTools';
+import { SERVER_URL } from '../../Shared/variables';
 
 const ToolPart = () => {
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`https://agile-oasis-28074.herokuapp.com/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`${SERVER_URL}/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);

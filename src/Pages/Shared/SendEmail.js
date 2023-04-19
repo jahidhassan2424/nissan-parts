@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SERVER_URL } from './variables';
 
 
 const SendEmail = ({ user, subject, text }) => {
@@ -9,7 +10,7 @@ const SendEmail = ({ user, subject, text }) => {
         text: { text },
     }
 
-    fetch(`https://agile-oasis-28074.herokuapp.com/email`, {
+    fetch(`${SERVER_URL}/email`, {
         method: 'POST',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,

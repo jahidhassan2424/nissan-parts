@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Checkouot from '../CheckOut/CheckOut';
 import CheckOut from '../CheckOut/CheckOut';
 import { format } from 'date-fns';
+import { SERVER_URL } from '../Shared/variables';
 const ProductDetails = ({ product }) => {
     const { _id, name, brand, category, description, minOrder, price, itemSold, availableQty } = product;
     const [totalPrice, setTotalPrice] = useState(minOrder * 10);
@@ -46,7 +47,7 @@ const ProductDetails = ({ product }) => {
 
 
             // Sending Data to database
-            const url = `https://agile-oasis-28074.herokuapp.com/orders`;
+            const url = `${SERVER_URL}/orders`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -85,7 +86,7 @@ const ProductDetails = ({ product }) => {
                             `,
                         }
 
-                        fetch(`https://agile-oasis-28074.herokuapp.com/email`, {
+                        fetch(`${SERVER_URL}/email`, {
                             method: 'POST',
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

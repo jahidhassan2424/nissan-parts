@@ -1,12 +1,13 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { SERVER_URL } from '../Shared/variables';
 
 const ManageSingleProducts = ({ p, index, refetch }) => {
     const { name, price, availableQty, _id } = p;
     const handleDelete = id => {
         const confirmation = window.confirm('Are you sure?');
         if (confirmation) {
-            fetch(`https://agile-oasis-28074.herokuapp.com/product/${id}`, {
+            fetch(`${SERVER_URL}/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

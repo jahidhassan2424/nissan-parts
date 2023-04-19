@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ManageOrdersSingle from './ManageOrdersSingle';
 import ConfirmationModal from '../Shared/ConfirmationModal';
 import Loading from '../Shared/Loading';
+import { SERVER_URL } from '../Shared/variables';
 
 const ManageOrders = () => {
     const [user] = useAuthState(auth);
@@ -17,7 +18,7 @@ const ManageOrders = () => {
     const [confirmModal, setConfirmModal] = useState('');
     const [clickedItem, setClickedItem] = useState([]);
 
-    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`https://agile-oasis-28074.herokuapp.com/orders`, {
+    const { isLoading, refetch } = useQuery('allOrders', () => fetch(`${SERVER_URL}/orders`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -27,8 +28,8 @@ const ManageOrders = () => {
             setOrders(data);
         })
     )
-    useEffect(async () => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${confirmModal}`, {
+    useEffect(() => {
+        fetch(`${SERVER_URL}/singleOrder/${confirmModal}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

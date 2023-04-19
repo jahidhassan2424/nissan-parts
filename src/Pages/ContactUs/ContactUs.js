@@ -3,13 +3,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import Navbar from '../Shared/Navbar/Navbar';
+import { SERVER_URL } from '../Shared/variables';
 const ContactUs = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        // https://agile-oasis-28074.herokuapp.com
-        // http://localhost:3001
+       
         try {
-            const response = await axios.post(`https://agile-oasis-28074.herokuapp.com/contactUs`, data)
+            const response = await axios.post(`${SERVER_URL}`, data)
             if (response.data.insertedId) {
                 toast.success('Email Sent Successfully!!')
             }

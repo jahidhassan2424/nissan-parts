@@ -1,13 +1,14 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import useAdmin from './../hooks/useAdmin';
+import { SERVER_URL } from '../Shared/variables';
 
 const SingleUser = ({ user, index, refetch }) => {
     const [admin] = useAdmin(user);
     const { email, role } = user;
 
 
-    // fetch(`https://agile-oasis-28074.herokuapp.com/users`, {
+    // fetch(`${SERVER_URL}/users`, {
     //     method: 'delete'
     // })
     //     .then(res => res.json())
@@ -15,7 +16,7 @@ const SingleUser = ({ user, index, refetch }) => {
 
     //Make an admin
     const handleMakeAdmin = (email) => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/makeAdmin/${email}`, {
+        fetch(`${SERVER_URL}/makeAdmin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -34,7 +35,7 @@ const SingleUser = ({ user, index, refetch }) => {
     }
     //Remove an admin
     const handleRemoveAdmin = (email) => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/removeAdmin/${email}`, {
+        fetch(`${SERVER_URL}/removeAdmin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

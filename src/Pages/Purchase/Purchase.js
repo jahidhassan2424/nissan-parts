@@ -5,11 +5,12 @@ import Loading from '../Shared/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ProductDetails from './ProductDetails';
+import { SERVER_URL } from '../Shared/variables';
 
 const Purchase = () => {
     const { id } = useParams();
     const [product, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`https://agile-oasis-28074.herokuapp.com/product/${id}`, {
+    const { isLoading, refetch } = useQuery('singleProduct', () => fetch(`${SERVER_URL}/product/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

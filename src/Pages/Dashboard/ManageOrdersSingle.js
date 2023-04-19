@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { SERVER_URL } from '../Shared/variables';
 
 const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
     const { customerName, productName, email, amount, orderPlacementDate, isPaid, _id, isShipped } = order;
 
     //Change Shipment status
     const handleShip = (_id) => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/order/${_id}`, {
+        fetch(`${SERVER_URL}/order/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

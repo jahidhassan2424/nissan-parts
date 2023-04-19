@@ -1,9 +1,10 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { SERVER_URL } from './variables';
 
 const ConfirmationModal = ({ clickedItem, setConfirmModal, refetch }) => {
     const handleDeleteOrder = () => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/order/${clickedItem._id}`, {
+        fetch(`${SERVER_URL}/order/${clickedItem._id}`, {
             method: 'delete',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

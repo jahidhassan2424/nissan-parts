@@ -5,13 +5,14 @@ import auth from './../../firebase.init';
 import SingleOrder from './SingleOrder';
 import Loading from '../Shared/Loading';
 import ConfirmationModal from '../Shared/ConfirmationModal';
+import { SERVER_URL } from '../Shared/variables';
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([]);
     const [confirmModal, setConfirmModal] = useState(''); //Default value is string
     const [clickedItem, setClickedItem] = useState([]);
     const { isLoading, error, refetch } = useQuery('myOrders', () => {
-        fetch(`https://agile-oasis-28074.herokuapp.com/myOrders?email=${user.email}`, {
+        fetch(`${SERVER_URL}/myOrders?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +22,7 @@ const MyOrders = () => {
     })
     useEffect(() => {
         {
-            confirmModal && fetch(`https://agile-oasis-28074.herokuapp.com/singleOrder/${confirmModal}`, {
+            confirmModal && fetch(`${SERVER_URL}/singleOrder/${confirmModal}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

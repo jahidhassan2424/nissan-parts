@@ -7,12 +7,13 @@ import useAdmin from './../hooks/useAdmin';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import NotFound from '../Shared/NotFound';
+import { SERVER_URL } from '../Shared/variables';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
-    const { isLoading, refetch } = useQuery('users', () => fetch(`https://agile-oasis-28074.herokuapp.com/users`, {
+    const { isLoading, refetch } = useQuery('users', () => fetch(`${SERVER_URL}/users`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

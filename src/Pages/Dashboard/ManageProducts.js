@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import ManageSingleProducts from './ManageSingleProducts';
+import { SERVER_URL } from '../Shared/variables';
 
 const ManageProducts = () => {
     // Order Data
     const [products, setProducts] = useState([]);
-    const { isLoading, refetch } = useQuery('products', () => fetch(`https://agile-oasis-28074.herokuapp.com/products`)
+    const { isLoading, refetch } = useQuery('products', () => fetch(`${SERVER_URL}/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data);

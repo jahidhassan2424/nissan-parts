@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './AddProduct.css'
+import { SERVER_URL } from '../../Shared/variables';
 
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -12,7 +13,7 @@ const AddProduct = () => {
         const response = axios.post('')
 
 
-        fetch(`https://agile-oasis-28074.herokuapp.com/products`, {
+        fetch(`${SERVER_URL}/products`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
