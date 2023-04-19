@@ -11,11 +11,11 @@ const Home = () => {
     return (
         <div className='h-fit '>
             <div className='home-hero'>
-                <div className='hero-child md:h-[100vh] h-[50vh]'>
+                <div className='hero-child '>
                     <Navbar />
                     <Banner />
                 </div>
-                <div className='md:mx-[15%] h-fit mt-[10%] ' >
+                <div className='md:mx-[15%] h-fit  ' >
                     {/* <div className='col-1'><Category /></div> */}
                     <ToolPart></ToolPart>
                     {/* <ReviewsSection></ReviewsSection> */}

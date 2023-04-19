@@ -20,7 +20,7 @@ const ToolPart = () => {
 
     return (
         <div className='mb-52'>
-            <h1 className='text-3xl font-bold text-center mb-32'>Parts Made by Us</h1>
+            <h1 className='text-3xl font-bold text-center mb-10'>Parts Made by Us</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 gap-x-32 justify-items-center for-testing items-center'>
                 {
                     products.slice(0, 6).map(product => <SingleTools

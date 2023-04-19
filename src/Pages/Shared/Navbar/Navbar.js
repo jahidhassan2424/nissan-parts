@@ -45,18 +45,18 @@ const Navbar = () => {
         signOut(auth);
     }
     const navItems = <>
-        <li ><NavLink to="/home" className={`md:${navText} text-white text-md mx-2 hover:bg-primary`}>Home</NavLink></li>
-        <li ><NavLink to="/allProducts" className={`md:${navText} text-white  text-md mx-1 hover:bg-primary`}>Products</NavLink></li>
-        <li className=' '><NavLink to="/contact" className={`md:${navText} text-white text-md mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
+        <li ><NavLink to="/home" className={`md:${navText} text-white text-lg mx-2 hover:bg-primary`}>Home</NavLink></li>
+        <li ><NavLink to="/allProducts" className={`md:${navText} text-white  text-lg mx-1 hover:bg-primary`}>Products</NavLink></li>
+        <li className=' '><NavLink to="/contact" className={`md:${navText} text-white text-lg mx-1 hover:bg-primary`}>Contact Us</NavLink></li>
         {
             user
                 ?
                 <div className='flex flex-row items-center gap-5'>
                     <div className='flex flex-row'>
                         <li className=''>
-                            <NavLink to="/dashboard" className={`md:${navText} text-white hover:bg-primary mx-2`}>Dashboard</NavLink>
+                            <NavLink to="/dashboard" className={`md:${navText} text-white hover:bg-primary text-lg mx-2`}>Dashboard</NavLink>
                         </li>
-                        <li onClick={handleSIgnOut} className='hover:bg-primary  rounded-lg mx-2'><NavLink to="/login" className={` ${loginBg} ${loginText}`}>Sign Out</NavLink></li>
+                        <li onClick={handleSIgnOut} className='hover:bg-primary text-lg rounded-lg mx-2'><NavLink to="/login" className={` ${loginBg} ${loginText}`}>Sign Out</NavLink></li>
                     </div>
                     <div class="dropdown dropdown-end">
                         <label tabindex="0">
@@ -72,12 +72,12 @@ const Navbar = () => {
                         </label>
                         <ul tabindex="0" class="  dropdown-content menu p-2 shadow bg-white rounded-box w-60 mt-3">
                             <li>
-                                <Link to="/dashboard " className='text-black w-full hover:bg-zinc-400'>My Profile</Link>
+                                <Link to="/dashboard " className='text-black w-full text-lg py-1 hover:bg-zinc-400'>My Profile</Link>
                             </li>
                             {
                                 !admin &&
                                 <li>
-                                    <Link to="/dashboard/my-review " className='text-black w-full hover:bg-zinc-400'>My Review</Link>
+                                    <Link to="/dashboard/my-review " className='text-black w-full text-lg py-1 hover:bg-zinc-400'>My Review</Link>
                                 </li>
                             }
 
@@ -85,22 +85,22 @@ const Navbar = () => {
                             {
                                 admin && <>
                                     <li>
-                                        <Link to="/dashboard/manage-orders " className='text-black w-full hover:bg-zinc-400'>Manage Orders</Link>
+                                        <Link to="/dashboard/manage-orders " className='text-black w-full text-lg  py-1 hover:bg-zinc-400'>Manage Orders</Link>
                                     </li>
                                     <li>
-                                        <Link to="/dashboard/manage-users " className='text-black w-full hover:bg-zinc-400'>Manage Users</Link>
+                                        <Link to="/dashboard/manage-users " className='text-black w-full text-lg py-1 hover:bg-zinc-400'>Manage Users</Link>
                                     </li>
                                     <li>
-                                        <Link to="/dashboard/add-product " className='text-black w-full hover:bg-zinc-400'>Add Products</Link>
+                                        <Link to="/dashboard/add-product " className='text-black w-full text-lg py-1 hover:bg-zinc-400'>Add Products</Link>
                                     </li>
                                     <li>
-                                        <Link to="/dashboard/manage-products " className='text-black w-full hover:bg-zinc-400'>Manage Products</Link>
+                                        <Link to="/dashboard/manage-products " className='text-black w-full text-lg py-1 hover:bg-zinc-400'>Manage Products</Link>
                                     </li>
 
                                 </>
                             }
                             <li>
-                                <button onClick={() => signOut(auth)} className='text-black w-full hover:bg-zinc-400'>Log Out</button>
+                                <button onClick={() => signOut(auth)} className='text-black w-full text-lg py-1 hover:bg-zinc-400'>Log Out</button>
                             </li>
                         </ul>
                     </div>

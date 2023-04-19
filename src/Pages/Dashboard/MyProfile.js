@@ -64,14 +64,14 @@ const MyProfile = () => {
                 <div className="w-1/2 lg:w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
-                <h2 className='text-5xl'>{userInfo.displayName || user.displayName}</h2>
+                <h2 className='text-3xl'>Hello, {userInfo.displayName.split(" ")[0] || user.displayName.split(" ")[0]}</h2>
             </div>
             <div className="overflow-x-auto">
 
                 <div className='flex justify-around items-center justify-items-center'>
-                    <div className="form-control">
+                    <div className="form-control pt-12 ">
                         <label className="cursor-pointer label">
-                            <span className="label-text text-xl">Edit Form</span>
+                            <span className="label-text text-lg">Edit Form</span>
                             <input onChange={() => setEditForm(!editForm)} type="checkbox" checked={editForm} className="checkbox checkbox-accent" />
                         </label>
                     </div>
@@ -81,7 +81,7 @@ const MyProfile = () => {
                 {
                     !editForm &&
                     <div className='flex justify-center mt-10'>
-                        <table className='child:text-xl w-full lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
+                        <table id="myProfileForm" className='child:text-md w-full lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className=''>
                                 <td className='pr-2'>Name :</td>
                                 <td>
@@ -142,11 +142,11 @@ const MyProfile = () => {
                 {/* edit form activated */}
                 {
                     editForm &&
-                    <h1 className='text-xl my-5 text-primary text-center'>Note: Changing name may take some time to appear.</h1>
+                    <h1 className='text-md my-5 text-primary text-center'>Note: Changing name may take some time to appear.</h1>
                 }
                 {
                     editForm && <form className='flex justify-center mt-10' onSubmit={handleSubmit(onEditedProfileDataSubmit)}>
-                        <table className='child:text-xl lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
+                        <table className='child:text-md lg:w-1/3 mx-3 lg:mx-0 myProfileTable '>
                             <tr className='tr'>
                                 <td className='pr-2'>Name</td>
                                 <td>

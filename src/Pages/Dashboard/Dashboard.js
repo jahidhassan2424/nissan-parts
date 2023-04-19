@@ -28,7 +28,7 @@ const Dashboard = () => {
                         {/* <!-- Sidebar content here --> */}
 
                         {/* My Profile  */}
-                        <li><Link to="/dashboard" className='text-xl text-black'><FontAwesomeIcon icon={faUser} />My Profile</Link></li>
+                        <li><Link to="/dashboard" className='text-lg text-black'><FontAwesomeIcon icon={faUser} />My Profile</Link></li>
                         {/* My Orders  */}
                         {
                             !admin && <div>
@@ -44,21 +44,21 @@ const Dashboard = () => {
                         {/* Manage  */}
                         {
                             admin && <div>
-                                <li><Link to="/dashboard/manage-orders" className='text-xl text-black'>
+                                <li><Link to="/dashboard/manage-orders" className='text-lg text-black'>
                                     <FontAwesomeIcon icon={faBagShopping} /> Manage Orders</Link></li>
 
                                 {/* Manage Users  */}
-                                <li><Link to="/dashboard/manage-users" className='text-xl  text-black'>
+                                <li><Link to="/dashboard/manage-users" className='text-lg  text-black'>
                                     <FontAwesomeIcon icon={faUsersGear} />Manage Users</Link>
                                 </li>
 
                                 {/* Add Products   */}
-                                <li><Link to="/dashboard/add-product" className='text-xl text-black'>
+                                <li><Link to="/dashboard/add-product" className='text-lg text-black'>
                                     <FontAwesomeIcon icon={faPlusCircle} />Add Product</Link>
                                 </li>
 
                                 {/* Manage Products  */}
-                                <li><Link to="/dashboard/manage-products" className='text-xl text-black'>
+                                <li><Link to="/dashboard/manage-products" className='text-lg text-black'>
                                     <FontAwesomeIcon icon={faCubesStacked} />Manage Products</Link>
                                 </li>
                             </div>
