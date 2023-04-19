@@ -28,13 +28,13 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
 
     return (
         <tr>
-            <th>{index + 1}</th>
-            <td>{customerName}</td>
-            <td>{email}</td>
-            <td>{productName}</td>
-            <td>{orderPlacementDate}</td>
-            <td>{amount}</td>
-            <td>{isPaid
+            <th className={`text-sm`}>{index + 1}</th>
+            <td className={`text-sm`}>{customerName}</td>
+            <td className={`text-sm`}>{email}</td>
+            <td className={`text-sm`}>{productName}</td>
+            <td className={`text-sm`}>{orderPlacementDate}</td>
+            <td className={`text-sm`}>{amount}</td>
+            <td className={`text-sm`}>{isPaid
                 ?
                 <div className="tooltip tooltip-neutral " data-tip={isShipped ? "Order Shipped" : "Payment is completed for this order"}>
                     <button className="btn btn-primary text-white">{isShipped ? "Shipped" : "Pending"}</button>
@@ -48,7 +48,7 @@ const ManageOrdersSingle = ({ order, index, setConfirmModal, refetch }) => {
             <td>{isPaid
                 ?
                 <div className="tooltip tooltip-neutral" data-tip={isShipped ? "Order Shipped" : "Click to ship"}>
-                    <button disabled={isShipped} onClick={() => handleShip(_id)} className="btn btn-primary text-white">{isShipped ? "Ship" : "Ship Now"}</button>
+                    <button disabled={isShipped} onClick={() => handleShip(_id)} className="btn btn-primary text-white">{isShipped ? "Shipped" : "Ship Now"}</button>
                 </div>
                 :
                 <div className="tooltip tooltip-neutral" data-tip="Cancel Order">

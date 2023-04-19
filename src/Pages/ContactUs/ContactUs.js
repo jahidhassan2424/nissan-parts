@@ -50,6 +50,7 @@ const ContactUs = () => {
                                     focus:ring
                                     focus:ring-indigo-200
                                     focus:ring-opacity-50
+                                    text-sm
                                 "
                                 placeholder="Joe Bloggs"
                                 required
@@ -74,8 +75,9 @@ const ContactUs = () => {
                                     focus:ring
                                     focus:ring-indigo-200
                                     focus:ring-opacity-50
+                                    text-sm
                                 "
-                                placeholder="joe.bloggs@example.com"
+                                placeholder="johndoe@example.com"
                                 required
                                 {...register('email', { required: true })}
                             />
@@ -97,6 +99,7 @@ const ContactUs = () => {
                                     focus:ring
                                     focus:ring-indigo-200
                                     focus:ring-opacity-50
+                                    text-sm
                                 "
                                 rows="3"
                                 placeholder="Tell us what you're thinking about..."
@@ -104,7 +107,7 @@ const ContactUs = () => {
                                 {...register('message', { required: true })}
                             ></textarea>
                         </label>
-                        <div className="mb-6">
+                        <div className="mb-6 text-center">
                             <button
                                 type="submit"
                                 className="
@@ -118,9 +121,10 @@ const ContactUs = () => {
                                     duration-150
                                     focus:shadow-outline
                                     hover:bg-orange-500
+                                    text-sm
                                 "
                             >
-                                Contact Us
+                                Send
                             </button>
                         </div>
                         <div>

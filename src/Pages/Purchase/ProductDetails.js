@@ -67,9 +67,11 @@ const ProductDetails = ({ product }) => {
                     if (payNow) {
                         navigate(`/checkout/${insertedId}`)
                     }
-                    toast.success('Order placed successfully', {
-                        autoClose: 2000
-                    });
+                    else {
+                        toast.success('Order placed successfully', {
+                            autoClose: 2000
+                        });
+                    }
                     if (!(data.acknowledged)) {
                         // Send order Success Email
                         const emailBody = {

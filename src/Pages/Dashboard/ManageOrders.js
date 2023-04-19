@@ -52,7 +52,7 @@ const ManageOrders = () => {
                 admin
                     ?
                     <div>
-                        <h1 className='text-4xl font-bold text-center mb-5'>Manage all Orders</h1>
+                        <h1 className='text-3xl font-bold text-center mb-5'>Manage all Orders</h1>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>

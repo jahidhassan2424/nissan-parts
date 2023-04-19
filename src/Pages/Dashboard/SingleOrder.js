@@ -28,8 +28,8 @@ const SingleOrder = ({ details, index, isLoading, setClickedOrderId, setConfirmM
                 ?
                 <div>
                     <button disabled className='btn btn-primary font-bold text-white'>PAID </button><br />
-                    <div className="tooltip tooltip-primary tooltip-right" data-tip="Transaction ID">
-                        <button className='text-green-500  font-bold'>
+                    <div className="tooltip tooltip-primary text-sm tooltip-right" data-tip="Transaction ID">
+                        <button className='text-green-500   font-bold'>
                             {transactionID || 'Not Found'}</button>
                     </div>
 

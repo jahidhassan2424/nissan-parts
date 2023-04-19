@@ -51,12 +51,6 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
         // }, [amount])
     }
 
-
-
-
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!stripe || !elements) {
@@ -139,12 +133,12 @@ const CheckOutForm = ({ id, isLoading, orderDetails, refetch }) => {
                 }
                 {
 
-                    paymentSuccess && <div className='text-green-500 text-lg mb-2 font-bold'>{paymentSuccess}
+                    paymentSuccess && <div className='text-green-500 text-md mb-2 font-bold'>{paymentSuccess}
 
                     </div>
                 }
                 {
-                    transactionId && <p className='text-black font-bold text-lg mb-3'>Transaction ID: {transactionId}</p>
+                    transactionId && <p className='text-black font-bold text-sm mb-3'>Transaction ID: {transactionId}</p>
                 }
                 <button className='btn btn-primary font-semibold text-white text-xl w-full' type="submit" disabled={!stripe || !clientSecret || isPaid}>
                     Pay Now
