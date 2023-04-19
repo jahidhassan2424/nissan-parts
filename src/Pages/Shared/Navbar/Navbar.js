@@ -66,9 +66,9 @@ const Navbar = () => {
                                     {
                                         user?.photoURL
                                             ?
-                                            <img src={user?.photoURL} />
+                                            <img src={user?.photoURL} alt="user avatar" />
                                             :
-                                            <img src={avater} />
+                                            <img src={avater} alt="user avatar not available" />
                                     }
                                 </div>
                             </div>
