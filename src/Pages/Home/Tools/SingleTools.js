@@ -17,7 +17,7 @@ const SingleTools = ({ isLoading, product, refetch }) => {
     }
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[800px] bg-secondary">
+            <div className="card card-compact w-96 shadow-xl min-h-[800px] bg-zinc-100">
                 <figure><img src={img} alt={`An image of ${name}`} /></figure>
                 <div className='text-center'>
                     <h2 className=" text-2xl my-10 font-semibold uppercase">{name}</h2>

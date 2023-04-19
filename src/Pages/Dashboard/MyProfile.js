@@ -56,15 +56,17 @@ const MyProfile = () => {
     if (processing || isLoading) {
         return <Loading></Loading>
     }
-
     return (
         <div>
             {/* <h2 className='text-5xl font-bold mt-20 text-center'>Your Profile</h2> */}
-            <div className="avatar mt-20 flex justify-center flex-col items-center gap-10">
+
+
+
+            <div className={`avatar mt-10 flex justify-center flex-col items-center gap-10`}>
                 <div className="w-1/2 lg:w-1/12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL || avater} />
                 </div>
-                <h2 className='text-3xl'>Hello, {userInfo.displayName.split(" ")[0] || user.displayName.split(" ")[0]}</h2>
+                <h2 className='text-3xl'>Hello, {userInfo?.displayName?.split(" ")[0] || user?.displayName?.split(" ")[0]}</h2>
             </div>
             <div className="overflow-x-auto">
 

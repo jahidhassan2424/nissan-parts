@@ -60,14 +60,17 @@ const Navbar = () => {
                     </div>
                     <div class="dropdown dropdown-end">
                         <label tabindex="0">
-                            <div className="w-10 rounded-full ring ring-primary ring-offset-zinc-700 ring-offset-2">
-                                {
-                                    userInfo.photoURL
-                                        ?
-                                        <img src={userInfo.photoURL} />
-                                        :
-                                        <img src={avater} />
-                                }
+                            <div className='avatar flex justify-center flex-col items-center gap-10'>
+
+                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    {
+                                        user?.photoURL
+                                            ?
+                                            <img src={user?.photoURL} />
+                                            :
+                                            <img src={avater} />
+                                    }
+                                </div>
                             </div>
                         </label>
                         <ul tabindex="0" class="  dropdown-content menu p-2 shadow bg-white rounded-box w-60 mt-3">
@@ -127,7 +130,7 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <div><Link to="/" className={` normal-case text-2xl lg:text-4xl ${navText} `}>NISSAN PARTS</Link></div>
+                <div><Link to="/" className={` normal-case text-2xl lg:text-3xl ${navText} `}>NISSAN PARTS</Link></div>
             </div>
             <div className=" hidden lg:flex  xs:text">
                 <ul className="menu menu-horizontal p-0 text-xl">

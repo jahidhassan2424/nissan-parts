@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <div>
             <div >
-                <div className="banner-content flex justify-center items-center md:h-[70vh] h-fit ">
+                <div className="banner-content flex justify-center items-center md:h-[100vh] ">
                     <div className=' text-center'>
 
                         <p className='xs:mb-20'>

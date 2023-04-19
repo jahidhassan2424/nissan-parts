@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
+
+
     return (
 
-        <footer className=" h-fit mt-[10%] text-center lg:text-left bg-gray-100 text-gray-600">
+        <footer className={` h-fit mt-[10%] text-center lg:text-left bg-gray-100 text-gray-600`}>
             <div className="flex justify-center items-center lg:justify-between p-3 border-b border-gray-300 ">
                 <div className="mr-12 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
