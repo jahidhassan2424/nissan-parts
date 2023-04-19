@@ -30,7 +30,7 @@ const Login = () => {
     //Token
 
     const [showPassword, setShowPassword] = useState(false);
-    const [token] = useToken(user || gUser)
+    const [token] = useToken(globalUser || gUser)
 
     useEffect(() => {
         if (token) {
@@ -38,9 +38,6 @@ const Login = () => {
         }
     }, [token, navigate, from])
 
-    if (globalUser) {
-
-    }
 
     if (loading || gLoading) {
         return <Loading></Loading>
