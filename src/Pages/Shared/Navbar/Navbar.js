@@ -62,7 +62,7 @@ const Navbar = () => {
                         <label tabindex="0">
                             <div className='avatar flex justify-center flex-col items-center gap-10'>
 
-                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <div className="w-10 rounded-full ">
                                     {
                                         user?.photoURL
                                             ?
